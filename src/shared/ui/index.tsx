@@ -3,8 +3,6 @@ import * as SelectPrimitive from "@radix-ui/react-select"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { Check, ChevronDown, X } from "lucide-react"
 
-
-
 // 텍스트 영역 컴포넌트
 export const Textarea = forwardRef(({ className, ...props }, ref) => {
   return (
