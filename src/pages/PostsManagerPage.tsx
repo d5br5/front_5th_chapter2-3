@@ -1,16 +1,8 @@
-import { useState } from "react"
-
-import { useLocation } from "react-router-dom"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
   Table,
   TableBody,
   TableHead,
@@ -32,15 +24,12 @@ import { TagSelector } from "../components/selector/TagSelector"
 import { SearchInput } from "../components/SearchInput"
 import { LimitSelector } from "../components/selector/LimitSelector"
 import { Pagination } from "../components/selector/Pagination"
+import { SortBySelector } from "../components/selector/SortBySelector"
+import { SortOrderSelector } from "../components/selector/SortOrderSelector"
 
 const PostsManager = () => {
-  const location = useLocation()
-  const queryParams = new URLSearchParams(location.search)
-
   // 상태 관리
   const { data, isLoading } = useUserPosts()
-  const [sortBy, setSortBy] = useState(queryParams.get("sortBy") || "")
-  const [sortOrder, setSortOrder] = useState(queryParams.get("sortOrder") || "asc")
 
   useUpdateURL()
 
@@ -58,26 +47,8 @@ const PostsManager = () => {
           <div className="flex gap-4">
             <SearchInput />
             <TagSelector />
-            <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="정렬 기준" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="none">없음</SelectItem>
-                <SelectItem value="id">ID</SelectItem>
-                <SelectItem value="title">제목</SelectItem>
-                <SelectItem value="reactions">반응</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select value={sortOrder} onValueChange={setSortOrder}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="정렬 순서" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="asc">오름차순</SelectItem>
-                <SelectItem value="desc">내림차순</SelectItem>
-              </SelectContent>
-            </Select>
+            <SortBySelector />
+            <SortOrderSelector />
           </div>
 
           {/* 게시물 테이블 */}
