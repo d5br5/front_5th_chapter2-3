@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Plus, Search } from "lucide-react"
+import { Search } from "lucide-react"
 import { useLocation, useNavigate } from "react-router-dom"
 import {
   Button,
@@ -7,10 +7,6 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
   Input,
   Select,
   SelectContent,
@@ -22,15 +18,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-  Textarea,
 } from "../shared/ui"
 
 import { UserModal } from "../components/UserModal"
-
 import { useTags } from "../hooks/useTags"
-
 import { useSearchQueryStore } from "../store/searchQuery"
-import { PostDetailDialog } from "../components/PostDetailDialog"
 
 import { useSelectedTag } from "../store/selectedTag"
 import { UserPost } from "../hooks/useUserPosts"
@@ -38,6 +30,9 @@ import { PostRow } from "../components/PostRow"
 import { AddCommentDialog } from "../components/AddCommentDialog"
 import { EditPostDialog } from "../components/dialog/EditPostDialog"
 import { EditCommentDialog } from "../components/dialog/EditCommentDialog"
+import { AddPostDialog } from "../components/dialog/AddPostDialog"
+import { AddPostButton } from "../components/AddPostButton"
+import { PostDetailDialog } from "../components/dialog/PostDetailDialog"
 
 const PostsManager = () => {
   const navigate = useNavigate()
@@ -54,9 +49,6 @@ const PostsManager = () => {
   // const [selectedPost, setSelectedPost] = useState(null)
   const [sortBy, setSortBy] = useState(queryParams.get("sortBy") || "")
   const [sortOrder, setSortOrder] = useState(queryParams.get("sortOrder") || "asc")
-  const [showAddDialog, setShowAddDialog] = useState(false)
-
-  const [newPost, setNewPost] = useState({ title: "", body: "", userId: 1 })
   const [loading, setLoading] = useState(false)
   const { data: tags } = useTags()
   const { selectedTag, setSelectedTag } = useSelectedTag()
@@ -150,23 +142,6 @@ const PostsManager = () => {
     setLoading(false)
   }
 
-  // 게시물 추가
-  const addPost = async () => {
-    try {
-      const response = await fetch("/api/posts/add", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newPost),
-      })
-      const data = await response.json()
-      setPosts([data, ...posts])
-      setShowAddDialog(false)
-      setNewPost({ title: "", body: "", userId: 1 })
-    } catch (error) {
-      console.error("게시물 추가 오류:", error)
-    }
-  }
-
   useEffect(() => {
     if (selectedTag) {
       fetchPostsByTag(selectedTag)
@@ -191,10 +166,7 @@ const PostsManager = () => {
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span>게시물 관리자</span>
-          <Button onClick={() => setShowAddDialog(true)}>
-            <Plus className="w-4 h-4 mr-2" />
-            게시물 추가
-          </Button>
+          <AddPostButton />
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -306,33 +278,7 @@ const PostsManager = () => {
       </CardContent>
 
       {/* 게시물 추가 대화상자 */}
-      <Dialog open={showAddDialog} onOpenChange={setShowAddDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>새 게시물 추가</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <Input
-              placeholder="제목"
-              value={newPost.title}
-              onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-            />
-            <Textarea
-              rows={30}
-              placeholder="내용"
-              value={newPost.body}
-              onChange={(e) => setNewPost({ ...newPost, body: e.target.value })}
-            />
-            <Input
-              type="number"
-              placeholder="사용자 ID"
-              value={newPost.userId}
-              onChange={(e) => setNewPost({ ...newPost, userId: Number(e.target.value) })}
-            />
-            <Button onClick={addPost}>게시물 추가</Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <AddPostDialog />
 
       {/* 게시물 수정 대화상자 */}
       <EditPostDialog />

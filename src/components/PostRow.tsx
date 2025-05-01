@@ -5,9 +5,10 @@ import { useSearchQueryStore } from "../store/searchQuery"
 import { highlightText } from "../utils"
 import { UserPost } from "../hooks/useUserPosts"
 import { useDialogStore } from "../store/dialog"
-import { POST_DETAIL_DIALOG } from "./PostDetailDialog"
+
 import { useSelectedTag } from "../store/selectedTag"
 import { useSelectedUser } from "../store/selectedUser"
+import { POST_DETAIL_DIALOG } from "./dialog/PostDetailDialog"
 
 interface PostRowProps {
   post: UserPost
