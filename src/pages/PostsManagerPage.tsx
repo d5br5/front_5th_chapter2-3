@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/shared/ui"
 
 import { AddCommentDialog } from "../features/comment/add-dialog/ui/CommentAddDialog"
 import { EditPostDialog } from "../components/dialog/EditPostDialog"
-import { EditCommentDialog } from "../components/dialog/EditCommentDialog"
+
 import { AddPostDialog } from "../features/post/add-dialog"
 import { PostDetailDialog } from "../components/dialog/PostDetailDialog"
 import { useUpdateURL } from "../features/url/model/useUpdateURL"
@@ -12,6 +12,7 @@ import { AdminHeader } from "@/widgets/post/header"
 import { PostFilter } from "@/widgets/post/filter"
 import { AdminNav } from "@/widgets/post/footer"
 import { UserModal } from "@/features/user/detail-dialog"
+import { EditCommentDialog } from "@/features/comment/edit-dialog"
 
 const PostsManager = () => {
   useUpdateURL()

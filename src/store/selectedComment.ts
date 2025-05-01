@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { Comment } from "../entity/comment/model/useComments"
+import { Comment } from "@/entity/comment/model/types"
 
 interface SelectedCommentStore {
   selectedComment: Comment | null
