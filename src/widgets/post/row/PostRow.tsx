@@ -1,4 +1,4 @@
-import { MessageSquare, ThumbsDown, ThumbsUp, Trash2 } from "lucide-react"
+import { MessageSquare, ThumbsDown, ThumbsUp } from "lucide-react"
 import { Button, TableCell, TableRow } from "@/shared/ui"
 
 import { useSearchQueryStore } from "@/features/filter/search/model/store"
@@ -13,6 +13,7 @@ import { UserPost } from "@/entity/post/model/useUserPosts"
 import { useSelectedPost } from "@/entity/post/model/selectedPost"
 import { useSelectedUser } from "@/entity/user/model/selectedUser"
 import { PostEditButton } from "@/features/post/edit-button"
+import { PostDeleteButton } from "@/features/post/delete-button"
 
 interface PostRowProps {
   post: UserPost
@@ -30,18 +31,6 @@ export const PostRow = ({ post }: PostRowProps) => {
     setSelectedPost(post)
     setDialogOpen(POST_DETAIL_DIALOG, true)
   }
-
-  // // 게시물 삭제
-  // const deletePost = async (id) => {
-  //     try {
-  //       await fetch(`/api/posts/${id}`, {
-  //         method: "DELETE",
-  //       })
-  //       setPosts(posts.filter((post) => post.id !== id))
-  //     } catch (error) {
-  //       console.error("게시물 삭제 오류:", error)
-  //     }
-  //   }
 
   return (
     <TableRow key={post.id}>
@@ -90,15 +79,7 @@ export const PostRow = ({ post }: PostRowProps) => {
             <MessageSquare className="w-4 h-4" />
           </Button>
           <PostEditButton post={post} />
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => {
-              //   deletePost(post.id)
-            }}
-          >
-            <Trash2 className="w-4 h-4" />
-          </Button>
+          <PostDeleteButton post={post} />
         </div>
       </TableCell>
     </TableRow>
