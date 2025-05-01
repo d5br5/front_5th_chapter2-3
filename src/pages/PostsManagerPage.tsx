@@ -33,6 +33,7 @@ import { EditCommentDialog } from "../components/dialog/EditCommentDialog"
 import { AddPostDialog } from "../components/dialog/AddPostDialog"
 import { AddPostButton } from "../components/AddPostButton"
 import { PostDetailDialog } from "../components/dialog/PostDetailDialog"
+import { useUpdateURL } from "../hooks/useUpdateURL"
 
 const PostsManager = () => {
   const navigate = useNavigate()
@@ -151,15 +152,7 @@ const PostsManager = () => {
     updateURL()
   }, [skip, limit, sortBy, sortOrder, selectedTag])
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    setSkip(parseInt(params.get("skip") || "0"))
-    setLimit(parseInt(params.get("limit") || "10"))
-    setSearchQuery(params.get("search") || "")
-    setSortBy(params.get("sortBy") || "")
-    setSortOrder(params.get("sortOrder") || "asc")
-    setSelectedTag(params.get("tag") || "")
-  }, [location.search])
+  useUpdateURL()
 
   return (
     <Card className="w-full max-w-6xl mx-auto">
