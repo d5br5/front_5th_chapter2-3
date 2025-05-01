@@ -1,18 +1,6 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Table,
-  TableBody,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../shared/ui"
+import { Card, CardContent, CardHeader, CardTitle } from "../shared/ui"
 
 import { UserModal } from "../components/UserModal"
-import { UserPost, useUserPosts } from "../hooks/useUserPosts"
-import { PostRow } from "../components/PostRow"
 import { AddCommentDialog } from "../components/AddCommentDialog"
 import { EditPostDialog } from "../components/dialog/EditPostDialog"
 import { EditCommentDialog } from "../components/dialog/EditCommentDialog"
@@ -26,11 +14,9 @@ import { LimitSelector } from "../components/selector/LimitSelector"
 import { Pagination } from "../components/selector/Pagination"
 import { SortBySelector } from "../components/selector/SortBySelector"
 import { SortOrderSelector } from "../components/selector/SortOrderSelector"
+import { PostTable } from "../components/PostTable"
 
 const PostsManager = () => {
-  // 상태 관리
-  const { data, isLoading } = useUserPosts()
-
   useUpdateURL()
 
   return (
@@ -52,22 +38,7 @@ const PostsManager = () => {
           </div>
 
           {/* 게시물 테이블 */}
-          {isLoading ? (
-            <div className="flex justify-center p-4">로딩 중...</div>
-          ) : (
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-[50px]">ID</TableHead>
-                  <TableHead>제목</TableHead>
-                  <TableHead className="w-[150px]">작성자</TableHead>
-                  <TableHead className="w-[150px]">반응</TableHead>
-                  <TableHead className="w-[150px]">작업</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>{data?.posts.map((post: UserPost) => <PostRow key={post.id} post={post} />)}</TableBody>
-            </Table>
-          )}
+          <PostTable />
 
           {/* 페이지네이션 */}
           <div className="flex justify-between items-center">
