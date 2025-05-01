@@ -1,11 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../shared/ui"
+import { Card, CardContent } from "@/shared/ui"
 
 import { UserModal } from "../components/UserModal"
 import { AddCommentDialog } from "../components/AddCommentDialog"
 import { EditPostDialog } from "../components/dialog/EditPostDialog"
 import { EditCommentDialog } from "../components/dialog/EditCommentDialog"
 import { AddPostDialog } from "../components/dialog/AddPostDialog"
-import { AddPostButton } from "../components/AddPostButton"
 import { PostDetailDialog } from "../components/dialog/PostDetailDialog"
 import { useUpdateURL } from "../hooks/useUpdateURL"
 import { TagSelector } from "../components/selector/TagSelector"
@@ -15,18 +14,14 @@ import { Pagination } from "../components/selector/Pagination"
 import { SortBySelector } from "../components/selector/SortBySelector"
 import { SortOrderSelector } from "../components/selector/SortOrderSelector"
 import { PostTable } from "@/components/PostTable"
+import { AdminHeader } from "@/widgets/admin/ui/Header"
 
 const PostsManager = () => {
   useUpdateURL()
 
   return (
     <Card className="w-full max-w-6xl mx-auto">
-      <CardHeader>
-        <CardTitle className="flex items-center justify-between">
-          <span>게시물 관리자</span>
-          <AddPostButton />
-        </CardTitle>
-      </CardHeader>
+      <AdminHeader />
       <CardContent>
         <div className="flex flex-col gap-4">
           {/* 검색 및 필터 컨트롤 */}
