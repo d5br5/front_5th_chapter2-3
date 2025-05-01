@@ -3,12 +3,13 @@ import { Button, TableCell, TableRow } from "../shared/ui"
 import { useSelectedPost } from "../store/selectedPost"
 import { useSearchQueryStore } from "../store/searchQuery"
 import { highlightText } from "../utils"
-import { UserPost } from "../hooks/useUserPosts"
+
 import { useDialogStore } from "../store/dialog"
 
 import { useSelectedTag } from "../store/selectedTag"
 import { useSelectedUser } from "../store/selectedUser"
 import { POST_DETAIL_DIALOG } from "./dialog/PostDetailDialog"
+import { UserPost } from "../hooks/useUserPosts"
 
 interface PostRowProps {
   post: UserPost

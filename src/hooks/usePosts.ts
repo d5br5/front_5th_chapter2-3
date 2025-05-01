@@ -1,5 +1,7 @@
-import { useQuery } from "@tanstack/react-query"
-import { useOptionStore } from "../store/option"
+import { useMemo } from "react"
+import { useNormalPosts } from "./useNormalPosts"
+import { useSearchPosts } from "./useSearchPosts"
+import { useTagPosts } from "./useTagPosts"
 
 export interface Post {
   id: number
@@ -14,7 +16,7 @@ export interface Post {
   views: number
 }
 
-interface PostResponse {
+export interface PostResponse {
   limit: number
   skip: number
   total: number
@@ -22,13 +24,23 @@ interface PostResponse {
 }
 
 export const usePosts = () => {
-  const { limit, skip } = useOptionStore()
-  return useQuery({
-    queryKey: ["posts", { limit, skip }],
-    queryFn: async () => {
-      const res = await fetch(`/api/posts?limit=${limit}&skip=${skip}`)
-      const data: PostResponse = await res.json()
-      return data
-    },
-  })
+  const { data: normalPosts, isLoading: normalPostsLoading } = useNormalPosts()
+  const { data: tagPosts, isLoading: tagPostsLoading } = useTagPosts()
+  const { data: searchPosts, isLoading: searchPostsLoading } = useSearchPosts()
+
+  const posts = useMemo(() => {
+    if (searchPosts) {
+      return searchPosts
+    }
+    if (tagPosts) {
+      return tagPosts
+    }
+    if (normalPosts) {
+      return normalPosts
+    }
+  }, [normalPosts, tagPosts, searchPosts])
+
+  const isLoading = normalPostsLoading || tagPostsLoading || searchPostsLoading
+
+  return { data: posts, isLoading }
 }
