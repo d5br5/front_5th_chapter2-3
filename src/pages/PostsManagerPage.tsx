@@ -2,7 +2,6 @@ import { useState } from "react"
 
 import { useLocation } from "react-router-dom"
 import {
-  Button,
   Card,
   CardContent,
   CardHeader,
@@ -31,6 +30,8 @@ import { PostDetailDialog } from "../components/dialog/PostDetailDialog"
 import { useUpdateURL } from "../hooks/useUpdateURL"
 import { TagSelector } from "../components/selector/TagSelector"
 import { SearchInput } from "../components/SearchInput"
+import { LimitSelector } from "../components/selector/LimitSelector"
+import { Pagination } from "../components/selector/Pagination"
 
 const PostsManager = () => {
   const location = useLocation()
@@ -38,8 +39,6 @@ const PostsManager = () => {
 
   // 상태 관리
   const { data, isLoading } = useUserPosts()
-  const [skip, setSkip] = useState(parseInt(queryParams.get("skip") || "0"))
-  const [limit, setLimit] = useState(parseInt(queryParams.get("limit") || "10"))
   const [sortBy, setSortBy] = useState(queryParams.get("sortBy") || "")
   const [sortOrder, setSortOrder] = useState(queryParams.get("sortOrder") || "asc")
 
@@ -101,44 +100,20 @@ const PostsManager = () => {
 
           {/* 페이지네이션 */}
           <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <span>표시</span>
-              <Select value={limit.toString()} onValueChange={(value) => setLimit(Number(value))}>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="10" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="10">10</SelectItem>
-                  <SelectItem value="20">20</SelectItem>
-                  <SelectItem value="30">30</SelectItem>
-                </SelectContent>
-              </Select>
-              <span>항목</span>
-            </div>
-            <div className="flex gap-2">
-              <Button disabled={skip === 0} onClick={() => setSkip(Math.max(0, skip - limit))}>
-                이전
-              </Button>
-              <Button disabled={!data || skip + limit >= data?.total} onClick={() => setSkip(skip + limit)}>
-                다음
-              </Button>
-            </div>
+            <LimitSelector />
+            <Pagination />
           </div>
         </div>
       </CardContent>
 
       {/* 게시물 추가 대화상자 */}
       <AddPostDialog />
-
       {/* 게시물 수정 대화상자 */}
       <EditPostDialog />
-
       {/* 댓글 추가 대화상자 */}
       <AddCommentDialog />
-
       {/* 댓글 수정 대화상자 */}
       <EditCommentDialog />
-
       {/* 게시물 상세 대화상자 */}
       <PostDetailDialog />
       <UserModal />
