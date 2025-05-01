@@ -225,26 +225,6 @@ const PostsManager = () => {
     setSelectedTag(params.get("tag") || "")
   }, [location.search])
 
-  // 게시물 테이블 렌더링
-  const renderPostTable = () => (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[50px]">ID</TableHead>
-          <TableHead>제목</TableHead>
-          <TableHead className="w-[150px]">작성자</TableHead>
-          <TableHead className="w-[150px]">반응</TableHead>
-          <TableHead className="w-[150px]">작업</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {posts.map((post: UserPost) => (
-          <PostRow key={post.id} post={post} />
-        ))}
-      </TableBody>
-    </Table>
-  )
-
   return (
     <Card className="w-full max-w-6xl mx-auto">
       <CardHeader>
@@ -315,7 +295,26 @@ const PostsManager = () => {
           </div>
 
           {/* 게시물 테이블 */}
-          {loading ? <div className="flex justify-center p-4">로딩 중...</div> : renderPostTable()}
+          {loading ? (
+            <div className="flex justify-center p-4">로딩 중...</div>
+          ) : (
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[50px]">ID</TableHead>
+                  <TableHead>제목</TableHead>
+                  <TableHead className="w-[150px]">작성자</TableHead>
+                  <TableHead className="w-[150px]">반응</TableHead>
+                  <TableHead className="w-[150px]">작업</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {posts.map((post: UserPost) => (
+                  <PostRow key={post.id} post={post} />
+                ))}
+              </TableBody>
+            </Table>
+          )}
 
           {/* 페이지네이션 */}
           <div className="flex justify-between items-center">
