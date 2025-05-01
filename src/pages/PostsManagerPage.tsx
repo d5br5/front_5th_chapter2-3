@@ -4,7 +4,7 @@ import { AddCommentDialog } from "../features/comment/add-dialog/ui/CommentAddDi
 import { EditPostDialog } from "../features/post/edit-dialog/EditPostDialog"
 
 import { AddPostDialog } from "../features/post/add-dialog"
-import { PostDetailDialog } from "../components/dialog/PostDetailDialog"
+import { PostDetailDialog } from "../widgets/post/detail-dialog"
 import { useUpdateURL } from "../features/url/model/useUpdateURL"
 
 import { PostTable } from "@/widgets/post/table/PostTable"

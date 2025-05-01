@@ -8,7 +8,7 @@ import { useDialogStore } from "@/store/dialog"
 
 import { useSelectedTag } from "@/store/selectedTag"
 import { useSelectedUser } from "@/store/selectedUser"
-import { POST_DETAIL_DIALOG } from "@/components/dialog/PostDetailDialog"
+import { POST_DETAIL_DIALOG } from "@/widgets/post/detail-dialog"
 import { UserPost } from "@/entity/post/model/useUserPosts"
 
 interface PostRowProps {
