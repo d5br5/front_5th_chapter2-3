@@ -7,14 +7,12 @@ import { EditCommentDialog } from "../components/dialog/EditCommentDialog"
 import { AddPostDialog } from "../components/dialog/AddPostDialog"
 import { PostDetailDialog } from "../components/dialog/PostDetailDialog"
 import { useUpdateURL } from "../hooks/useUpdateURL"
-import { TagSelector } from "../components/selector/TagSelector"
-import { SearchInput } from "../components/SearchInput"
 import { LimitSelector } from "../components/selector/LimitSelector"
 import { Pagination } from "../components/selector/Pagination"
-import { SortBySelector } from "../components/selector/SortBySelector"
-import { SortOrderSelector } from "../components/selector/SortOrderSelector"
+
 import { PostTable } from "@/components/PostTable"
 import { AdminHeader } from "@/widgets/admin/ui/Header"
+import { PostFilter } from "@/widgets/admin/ui/PostFilter"
 
 const PostsManager = () => {
   useUpdateURL()
@@ -24,15 +22,7 @@ const PostsManager = () => {
       <AdminHeader />
       <CardContent>
         <div className="flex flex-col gap-4">
-          {/* 검색 및 필터 컨트롤 */}
-          <div className="flex gap-4">
-            <SearchInput />
-            <TagSelector />
-            <SortBySelector />
-            <SortOrderSelector />
-          </div>
-
-          {/* 게시물 테이블 */}
+          <PostFilter />
           <PostTable />
 
           {/* 페이지네이션 */}
