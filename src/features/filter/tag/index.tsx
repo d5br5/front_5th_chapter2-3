@@ -1,6 +1,6 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui"
 import { useTags } from "@/entity/tag/model/useTags"
-import { useSelectedTag } from "../../store/selectedTag"
+import { useSelectedTag } from "../../../store/selectedTag"
 
 export const TagSelect = () => {
   const { data: tags } = useTags()

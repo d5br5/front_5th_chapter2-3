@@ -1,7 +1,7 @@
-import { TagSelect } from "@/features/TagSelect"
-import { SearchInput } from "@/features/SearchInput"
-import { SortBySelect } from "@/features/SortBySelect"
-import { SortOrderSelector } from "@/features/SortOrderSelect"
+import { TagSelect } from "@/features/filter/tag"
+import { SearchInput } from "@/features/filter/search"
+import { SortBySelect } from "@/features/filter/sort-by"
+import { SortOrderSelector } from "@/features/filter/sort-order"
 
 export const PostFilter = () => {
   return (
