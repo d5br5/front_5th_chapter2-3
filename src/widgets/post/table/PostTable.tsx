@@ -1,6 +1,6 @@
-import { useUserPosts } from "../entity/post/model/useUserPosts"
-import { Table, TableBody, TableHead, TableHeader, TableRow } from "../shared/ui"
-import { PostRow } from "./PostRow"
+import { useUserPosts } from "@/entity/post/model/useUserPosts"
+import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/shared/ui"
+import { PostRow } from "@/widgets/post/row/PostRow"
 
 export const PostTable = () => {
   const { data, isLoading } = useUserPosts()

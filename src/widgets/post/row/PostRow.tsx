@@ -1,15 +1,15 @@
 import { Edit2, MessageSquare, ThumbsDown, ThumbsUp, Trash2 } from "lucide-react"
-import { Button, TableCell, TableRow } from "../shared/ui"
-import { useSelectedPost } from "../store/selectedPost"
-import { useSearchQueryStore } from "../store/searchQuery"
-import { highlightText } from "../shared/lib/highlightText"
+import { Button, TableCell, TableRow } from "@/shared/ui"
+import { useSelectedPost } from "@/store/selectedPost"
+import { useSearchQueryStore } from "@/store/searchQuery"
+import { highlightText } from "@/shared/lib/highlightText"
 
-import { useDialogStore } from "../store/dialog"
+import { useDialogStore } from "@/store/dialog"
 
-import { useSelectedTag } from "../store/selectedTag"
-import { useSelectedUser } from "../store/selectedUser"
-import { POST_DETAIL_DIALOG } from "./dialog/PostDetailDialog"
-import { UserPost } from "../entity/post/model/useUserPosts"
+import { useSelectedTag } from "@/store/selectedTag"
+import { useSelectedUser } from "@/store/selectedUser"
+import { POST_DETAIL_DIALOG } from "@/components/dialog/PostDetailDialog"
+import { UserPost } from "@/entity/post/model/useUserPosts"
 
 interface PostRowProps {
   post: UserPost

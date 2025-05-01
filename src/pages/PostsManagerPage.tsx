@@ -7,7 +7,7 @@ import { AddPostDialog } from "../features/post/add-dialog"
 import { PostDetailDialog } from "../components/dialog/PostDetailDialog"
 import { useUpdateURL } from "../features/url/model/useUpdateURL"
 
-import { PostTable } from "@/components/PostTable"
+import { PostTable } from "@/widgets/post/table/PostTable"
 import { AdminHeader } from "@/widgets/post/header"
 import { PostFilter } from "@/widgets/post/filter"
 import { AdminNav } from "@/widgets/post/footer"
