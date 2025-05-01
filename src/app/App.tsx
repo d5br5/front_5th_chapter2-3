@@ -1,8 +1,11 @@
 import { BrowserRouter as Router } from "react-router-dom"
+
+import { QueryClientProvider } from "@/app/providers/QueryClientProvider"
+
+import PostsManagerPage from "@/pages/PostsManagerPage.tsx"
+
 import Header from "@/widgets/layout/ui/Header"
 import Footer from "@/widgets/layout/ui/Footer"
-import PostsManagerPage from "@/pages/PostsManagerPage.tsx"
-import { QueryClientProvider } from "@/components/QueryClientProvider.tsx"
 
 const App = () => {
   return (

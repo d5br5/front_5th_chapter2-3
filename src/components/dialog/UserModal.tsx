@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../shared/ui"
-import { useSelectedUser } from "../store/selectedUser"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/ui"
+import { useSelectedUser } from "@/store/selectedUser"
 import axios from "axios"
-import { UserDetail } from "../hooks/useUsers"
+import { UserDetail } from "@/hooks/useUsers"
 
 export const UserModal = () => {
   const { selectedUser, setSelectedUser } = useSelectedUser()
