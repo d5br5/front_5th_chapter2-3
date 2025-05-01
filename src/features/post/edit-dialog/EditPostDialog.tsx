@@ -1,29 +1,14 @@
-import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Input, Textarea } from "../../shared/ui"
-import { useDialogStore } from "../../store/dialog"
-import { useSelectedPost } from "../../store/selectedPost"
+import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Input, Textarea } from "../../../shared/ui"
+import { useDialogStore } from "../../../store/dialog"
+import { useSelectedPost } from "../../../store/selectedPost"
+import { useEditPost } from "./model/useEditPost"
 
-const EDIT_POST_DIALOG = "EDIT_POST_DIALOG"
+export const EDIT_POST_DIALOG = "EDIT_POST_DIALOG"
 
 export const EditPostDialog = () => {
   const { selectedPost, setSelectedPost } = useSelectedPost()
   const { isDialogOpen, setDialogOpen } = useDialogStore()
-
-  // 게시물 업데이트
-  const updatePost = async () => {
-    if (!selectedPost) return
-    try {
-      //   const response = await fetch(`/api/posts/${selectedPost.id}`, {
-      //     method: "PUT",
-      //     headers: { "Content-Type": "application/json" },
-      //     body: JSON.stringify(selectedPost),
-      //   })
-      //   const data = await response.json()
-      //   setPosts(posts.map((post) => (post.id === data.id ? data : post)))
-      setDialogOpen(EDIT_POST_DIALOG, false)
-    } catch (error) {
-      console.error("게시물 업데이트 오류:", error)
-    }
-  }
+  const { mutation } = useEditPost()
 
   if (!selectedPost) return null
 
@@ -45,7 +30,7 @@ export const EditPostDialog = () => {
             value={selectedPost?.body || ""}
             onChange={(e) => setSelectedPost({ ...selectedPost, body: e.target.value })}
           />
-          <Button onClick={updatePost}>게시물 업데이트</Button>
+          <Button onClick={() => mutation.mutate(selectedPost.id)}>게시물 업데이트</Button>
         </div>
       </DialogContent>
     </Dialog>

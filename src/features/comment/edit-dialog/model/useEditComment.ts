@@ -18,9 +18,11 @@ export const useEditComment = () => {
     mutationFn: (commentId: number) => {
       return editComment(commentId, body)
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       setSelectedComment(null)
       setDialogOpen(EDIT_COMMENT_DIALOG, false)
+      console.log(data)
+      // 댓글 목록 수정
     },
     onError: (error) => {
       console.error("댓글 수정 오류:", error)
