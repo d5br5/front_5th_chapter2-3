@@ -14,7 +14,7 @@ import { LimitSelector } from "../components/selector/LimitSelector"
 import { Pagination } from "../components/selector/Pagination"
 import { SortBySelector } from "../components/selector/SortBySelector"
 import { SortOrderSelector } from "../components/selector/SortOrderSelector"
-import { PostTable } from "../components/PostTable"
+import { PostTable } from "@/components/PostTable"
 
 const PostsManager = () => {
   useUpdateURL()
