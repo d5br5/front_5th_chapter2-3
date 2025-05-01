@@ -1,12 +1,10 @@
-import { useQuery } from "@tanstack/react-query"
-
 export interface User {
   id: number
   image: string
   username: string
 }
 
-interface UserResponse {
+export interface GetUserListResponse {
   limit: number
   skip: number
   total: number
@@ -39,15 +37,4 @@ interface Company {
   title: string
   department: string
   address: Address
-}
-
-export const useUsers = () => {
-  return useQuery({
-    queryKey: ["users"],
-    queryFn: async () => {
-      const res = await fetch(`/api/users?limit=0&select=username,image`)
-      const data: UserResponse = await res.json()
-      return data
-    },
-  })
 }

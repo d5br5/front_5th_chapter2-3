@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/shared/ui"
 
-import { UserModal } from "@/components/dialog/UserModal"
 import { AddCommentDialog } from "../features/comment/add-dialog/ui/CommentAddDialog"
 import { EditPostDialog } from "../components/dialog/EditPostDialog"
 import { EditCommentDialog } from "../components/dialog/EditCommentDialog"
@@ -12,6 +11,7 @@ import { PostTable } from "@/components/PostTable"
 import { AdminHeader } from "@/widgets/admin/ui/Header"
 import { PostFilter } from "@/widgets/admin/ui/PostFilter"
 import { AdminNav } from "@/widgets/admin/ui/Footer"
+import { UserModal } from "@/features/user/detail-dialog"
 
 const PostsManager = () => {
   useUpdateURL()

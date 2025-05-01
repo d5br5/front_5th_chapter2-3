@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useQuery } from "@tanstack/react-query"
-import { User } from "./useUsers"
+import { User } from "../entity/user/model/useUsers"
 
 export interface Comment {
   body: string
