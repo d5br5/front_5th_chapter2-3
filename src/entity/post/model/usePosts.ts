@@ -3,26 +3,6 @@ import { useNormalPosts } from "./useNormalPosts"
 import { useSearchPosts } from "./useSearchPosts"
 import { useTagPosts } from "./useTagPosts"
 
-export interface Post {
-  id: number
-  body: string
-  reactions: {
-    dislikes: number
-    likes: number
-  }
-  tags: string[]
-  title: string
-  userId: number
-  views: number
-}
-
-export interface PostResponse {
-  limit: number
-  skip: number
-  total: number
-  posts: Post[]
-}
-
 export const usePosts = () => {
   const { data: normalPosts, isLoading: normalPostsLoading } = useNormalPosts()
   const { data: tagPosts, isLoading: tagPostsLoading } = useTagPosts()

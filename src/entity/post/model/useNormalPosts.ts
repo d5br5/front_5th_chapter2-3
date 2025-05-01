@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { useOptionStore } from "../store/option"
+import { useOptionStore } from "../../../store/option"
 import axios from "axios"
 import { PostResponse } from "./usePosts"
 

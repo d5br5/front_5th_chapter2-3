@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
-import { useSearchQueryStore } from "../store/searchQuery"
-import axios from "axios"
-import { PostResponse } from "./usePosts"
+import { useSearchQueryStore } from "../../../store/searchQuery"
+import { searchPosts } from "../api/searchPosts"
 
 export const useSearchPosts = () => {
   const { searchQuery } = useSearchQueryStore()
@@ -10,8 +9,7 @@ export const useSearchPosts = () => {
     queryKey: ["searchPosts", searchQuery],
     queryFn: async () => {
       try {
-        const res = await axios.get<PostResponse>(`/api/posts/search?q=${searchQuery}`)
-        return res.data
+        return await searchPosts(searchQuery)
       } catch (e) {
         console.error("게시물 검색 오류:", e)
       }

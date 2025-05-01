@@ -1,8 +1,7 @@
-import axios from "axios"
 import { useQuery } from "@tanstack/react-query"
 
-import { useSelectedTag } from "../store/selectedTag"
-import { PostResponse } from "./usePosts"
+import { useSelectedTag } from "../../../store/selectedTag"
+import { getTagPosts } from "../api/getTagPosts"
 
 export const useTagPosts = () => {
   const { selectedTag } = useSelectedTag()
@@ -11,8 +10,7 @@ export const useTagPosts = () => {
     queryKey: ["tagPosts", selectedTag],
     queryFn: async () => {
       try {
-        const res = await axios.get<PostResponse>(`/api/posts/tag/${selectedTag}`)
-        return res.data
+        return await getTagPosts(selectedTag)
       } catch (error) {
         console.error("태그별 게시물 가져오기 오류:", error)
       }
