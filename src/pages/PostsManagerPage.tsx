@@ -5,7 +5,7 @@ import { EditPostDialog } from "../components/dialog/EditPostDialog"
 import { EditCommentDialog } from "../components/dialog/EditCommentDialog"
 import { AddPostDialog } from "../components/dialog/AddPostDialog"
 import { PostDetailDialog } from "../components/dialog/PostDetailDialog"
-import { useUpdateURL } from "../hooks/useUpdateURL"
+import { useUpdateURL } from "../features/url/model/useUpdateURL"
 
 import { PostTable } from "@/components/PostTable"
 import { AdminHeader } from "@/widgets/admin/ui/Header"
