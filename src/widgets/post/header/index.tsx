@@ -1,4 +1,4 @@
-import { PostAddButton } from "@/components/PostAddButton"
+import { PostAddButton } from "@/features/post/add-button"
 import { CardHeader, CardTitle } from "@/shared/ui"
 
 export const AdminHeader = () => {

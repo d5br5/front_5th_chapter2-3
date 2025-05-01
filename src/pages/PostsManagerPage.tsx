@@ -8,9 +8,9 @@ import { PostDetailDialog } from "../components/dialog/PostDetailDialog"
 import { useUpdateURL } from "../features/url/model/useUpdateURL"
 
 import { PostTable } from "@/components/PostTable"
-import { AdminHeader } from "@/widgets/admin/ui/Header"
-import { PostFilter } from "@/widgets/admin/ui/PostFilter"
-import { AdminNav } from "@/widgets/admin/ui/Footer"
+import { AdminHeader } from "@/widgets/post/header"
+import { PostFilter } from "@/widgets/post/filter"
+import { AdminNav } from "@/widgets/post/footer"
 import { UserModal } from "@/features/user/detail-dialog"
 
 const PostsManager = () => {
