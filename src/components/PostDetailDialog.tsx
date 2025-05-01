@@ -40,6 +40,41 @@ export const CommentList = ({ postId }: CommentListProps) => {
 
   if (!comments) return null
 
+  // // 댓글 삭제
+  // const deleteComment = async (id, postId) => {
+  //   try {
+  //     await fetch(`/api/comments/${id}`, {
+  //       method: "DELETE",
+  //     })
+  //     setComments((prev) => ({
+  //       ...prev,
+  //       [postId]: prev[postId].filter((comment) => comment.id !== id),
+  //     }))
+  //   } catch (error) {
+  //     console.error("댓글 삭제 오류:", error)
+  //   }
+  // }
+
+  // // 댓글 좋아요
+  // const likeComment = async (id, postId) => {
+  //   try {
+  //     const response = await fetch(`/api/comments/${id}`, {
+  //       method: "PATCH",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ likes: comments[postId].find((c) => c.id === id).likes + 1 }),
+  //     })
+  //     const data = await response.json()
+  //     setComments((prev) => ({
+  //       ...prev,
+  //       [postId]: prev[postId].map((comment) =>
+  //         comment.id === data.id ? { ...data, likes: comment.likes + 1 } : comment,
+  //       ),
+  //     }))
+  //   } catch (error) {
+  //     console.error("댓글 좋아요 오류:", error)
+  //   }
+  // }
+
   return (
     <div className="mt-2">
       <div className="flex items-center justify-between mb-2">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Edit2, MessageSquare, Plus, Search, ThumbsDown, ThumbsUp, Trash2 } from "lucide-react"
+import { Plus, Search } from "lucide-react"
 import { useLocation, useNavigate } from "react-router-dom"
 import {
   Button,
@@ -19,20 +19,22 @@ import {
   SelectValue,
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
   Textarea,
 } from "../shared/ui"
-import { highlightText } from "../utils"
+
 import { UserModal } from "../components/UserModal"
-import { useSelectedUser } from "../store/selectedUser"
+
 import { useTags } from "../hooks/useTags"
 import { useSelectedPost } from "../store/selectedPost"
 import { useSearchQueryStore } from "../store/searchQuery"
-import { POST_DETAIL_DIALOG, PostDetailDialog } from "../components/PostDetailDialog"
-import { useDialogStore } from "../store/dialog"
+import { PostDetailDialog } from "../components/PostDetailDialog"
+
+import { useSelectedTag } from "../store/selectedTag"
+import { UserPost } from "../hooks/useUserPosts"
+import { PostRow } from "../components/PostRow"
 
 const PostsManager = () => {
   const navigate = useNavigate()
@@ -55,14 +57,14 @@ const PostsManager = () => {
   const [newPost, setNewPost] = useState({ title: "", body: "", userId: 1 })
   const [loading, setLoading] = useState(false)
   const { data: tags } = useTags()
-  const [selectedTag, setSelectedTag] = useState(queryParams.get("tag") || "")
+  const { selectedTag, setSelectedTag } = useSelectedTag()
+  // const [selectedTag, setSelectedTag] = useState(queryParams.get("tag") || "")
+
   const [comments, setComments] = useState({})
   const [selectedComment, setSelectedComment] = useState(null)
   const [newComment, setNewComment] = useState({ body: "", postId: null, userId: 1 })
   const [showAddCommentDialog, setShowAddCommentDialog] = useState(false)
   const [showEditCommentDialog, setShowEditCommentDialog] = useState(false)
-  const { setSelectedUser } = useSelectedUser()
-  const { setDialogOpen } = useDialogStore()
 
   // URL 업데이트 함수
   const updateURL = () => {
@@ -185,18 +187,6 @@ const PostsManager = () => {
     }
   }
 
-  // 게시물 삭제
-  const deletePost = async (id) => {
-    try {
-      await fetch(`/api/posts/${id}`, {
-        method: "DELETE",
-      })
-      setPosts(posts.filter((post) => post.id !== id))
-    } catch (error) {
-      console.error("게시물 삭제 오류:", error)
-    }
-  }
-
   // 댓글 추가
   const addComment = async () => {
     try {
@@ -236,47 +226,6 @@ const PostsManager = () => {
     }
   }
 
-  // 댓글 삭제
-  const deleteComment = async (id, postId) => {
-    try {
-      await fetch(`/api/comments/${id}`, {
-        method: "DELETE",
-      })
-      setComments((prev) => ({
-        ...prev,
-        [postId]: prev[postId].filter((comment) => comment.id !== id),
-      }))
-    } catch (error) {
-      console.error("댓글 삭제 오류:", error)
-    }
-  }
-
-  // 댓글 좋아요
-  const likeComment = async (id, postId) => {
-    try {
-      const response = await fetch(`/api/comments/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ likes: comments[postId].find((c) => c.id === id).likes + 1 }),
-      })
-      const data = await response.json()
-      setComments((prev) => ({
-        ...prev,
-        [postId]: prev[postId].map((comment) =>
-          comment.id === data.id ? { ...data, likes: comment.likes + 1 } : comment,
-        ),
-      }))
-    } catch (error) {
-      console.error("댓글 좋아요 오류:", error)
-    }
-  }
-
-  // 게시물 상세 보기
-  const openPostDetail = (post) => {
-    setSelectedPost(post)
-    setDialogOpen(POST_DETAIL_DIALOG, true)
-  }
-
   useEffect(() => {
     if (selectedTag) {
       fetchPostsByTag(selectedTag)
@@ -309,68 +258,8 @@ const PostsManager = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {posts.map((post) => (
-          <TableRow key={post.id}>
-            <TableCell>{post.id}</TableCell>
-            <TableCell>
-              <div className="space-y-1">
-                <div>{highlightText(post.title, searchQuery)}</div>
-
-                <div className="flex flex-wrap gap-1">
-                  {post.tags?.map((tag) => (
-                    <span
-                      key={tag}
-                      className={`px-1 text-[9px] font-semibold rounded-[4px] cursor-pointer ${
-                        selectedTag === tag
-                          ? "text-white bg-blue-500 hover:bg-blue-600"
-                          : "text-blue-800 bg-blue-100 hover:bg-blue-200"
-                      }`}
-                      onClick={() => {
-                        setSelectedTag(tag)
-                        updateURL()
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </TableCell>
-            <TableCell>
-              <div className="flex items-center space-x-2 cursor-pointer" onClick={() => setSelectedUser(post.author)}>
-                <img src={post.author?.image} alt={post.author?.username} className="w-8 h-8 rounded-full" />
-                <span>{post.author?.username}</span>
-              </div>
-            </TableCell>
-            <TableCell>
-              <div className="flex items-center gap-2">
-                <ThumbsUp className="w-4 h-4" />
-                <span>{post.reactions?.likes || 0}</span>
-                <ThumbsDown className="w-4 h-4" />
-                <span>{post.reactions?.dislikes || 0}</span>
-              </div>
-            </TableCell>
-            <TableCell>
-              <div className="flex items-center gap-2">
-                <Button variant="ghost" size="sm" onClick={() => openPostDetail(post)}>
-                  <MessageSquare className="w-4 h-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => {
-                    setSelectedPost(post)
-                    setShowEditDialog(true)
-                  }}
-                >
-                  <Edit2 className="w-4 h-4" />
-                </Button>
-                <Button variant="ghost" size="sm" onClick={() => deletePost(post.id)}>
-                  <Trash2 className="w-4 h-4" />
-                </Button>
-              </div>
-            </TableCell>
-          </TableRow>
+        {posts.map((post: UserPost) => (
+          <PostRow key={post.id} post={post} />
         ))}
       </TableBody>
     </Table>
