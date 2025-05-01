@@ -1,14 +1,14 @@
-import { TagSelector } from "@/components/selector/TagSelector"
-import { SearchInput } from "@/components/SearchInput"
-import { SortBySelector } from "@/components/selector/SortBySelector"
-import { SortOrderSelector } from "@/components/selector/SortOrderSelector"
+import { TagSelect } from "@/features/TagSelect"
+import { SearchInput } from "@/features/SearchInput"
+import { SortBySelect } from "@/features/SortBySelect"
+import { SortOrderSelector } from "@/features/SortOrderSelect"
 
 export const PostFilter = () => {
   return (
     <div className="flex gap-4">
       <SearchInput />
-      <TagSelector />
-      <SortBySelector />
+      <TagSelect />
+      <SortBySelect />
       <SortOrderSelector />
     </div>
   )

@@ -1,7 +1,7 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../shared/ui"
 import { useOptionStore } from "../../store/option"
 
-export const SortBySelector = () => {
+export const SortBySelect = () => {
   const { sortBy, setSortBy } = useOptionStore()
 
   return (

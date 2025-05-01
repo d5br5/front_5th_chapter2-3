@@ -1,11 +1,11 @@
-import { LimitSelector } from "@/components/selector/LimitSelector"
+import { LimitSelect } from "@/features/LimitSelect"
 import { GoNextPageButton } from "@/features/GoNextPage"
 import { GoPrevPageButton } from "@/features/GoPrevPage"
 
 export const AdminNav = () => {
   return (
     <div className="flex justify-between items-center">
-      <LimitSelector />
+      <LimitSelect />
       <div className="flex gap-2">
         <GoPrevPageButton />
         <GoNextPageButton />

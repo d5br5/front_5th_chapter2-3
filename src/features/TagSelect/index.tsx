@@ -2,7 +2,7 @@ import { useTags } from "../../hooks/useTags"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../shared/ui"
 import { useSelectedTag } from "../../store/selectedTag"
 
-export const TagSelector = () => {
+export const TagSelect = () => {
   const { data: tags } = useTags()
   const { selectedTag, setSelectedTag } = useSelectedTag()
 

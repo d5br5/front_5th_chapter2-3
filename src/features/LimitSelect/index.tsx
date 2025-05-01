@@ -1,7 +1,7 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../shared/ui"
-import { useOptionStore } from "../../store/option"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui"
+import { useOptionStore } from "@/store/option"
 
-export const LimitSelector = () => {
+export const LimitSelect = () => {
   const { limit, setLimit } = useOptionStore()
 
   return (
