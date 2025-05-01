@@ -4,7 +4,7 @@ import { useSelectedPost } from "../../store/selectedPost"
 import { useSearchQueryStore } from "../../store/searchQuery"
 import { highlightText } from "../../shared/lib/highlightText"
 import { Button, Dialog, DialogContent, DialogHeader, DialogTitle } from "../../shared/ui"
-import { useComments } from "../../hooks/useComments"
+import { useComments } from "../../entity/comment/model/useComments"
 
 export const POST_DETAIL_DIALOG = "POST_DETAIL_DIALOG"
 
