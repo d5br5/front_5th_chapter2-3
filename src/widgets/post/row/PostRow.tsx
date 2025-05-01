@@ -1,4 +1,4 @@
-import { Edit2, MessageSquare, ThumbsDown, ThumbsUp, Trash2 } from "lucide-react"
+import { MessageSquare, ThumbsDown, ThumbsUp, Trash2 } from "lucide-react"
 import { Button, TableCell, TableRow } from "@/shared/ui"
 
 import { useSearchQueryStore } from "@/features/filter/search/model/store"
@@ -12,6 +12,7 @@ import { POST_DETAIL_DIALOG } from "@/widgets/post/detail-dialog"
 import { UserPost } from "@/entity/post/model/useUserPosts"
 import { useSelectedPost } from "@/entity/post/model/selectedPost"
 import { useSelectedUser } from "@/entity/user/model/selectedUser"
+import { PostEditButton } from "@/features/post/edit-button"
 
 interface PostRowProps {
   post: UserPost
@@ -88,16 +89,7 @@ export const PostRow = ({ post }: PostRowProps) => {
           <Button variant="ghost" size="sm" onClick={openPostDetail}>
             <MessageSquare className="w-4 h-4" />
           </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => {
-              setSelectedPost(post)
-              //   setShowEditDialog(true)
-            }}
-          >
-            <Edit2 className="w-4 h-4" />
-          </Button>
+          <PostEditButton post={post} />
           <Button
             variant="ghost"
             size="sm"
