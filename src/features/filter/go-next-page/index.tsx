@@ -1,6 +1,6 @@
 import { useUserPosts } from "@/entity/post/model/useUserPosts"
 import { Button } from "@/shared/ui"
-import { useOptionStore } from "@/store/option"
+import { useOptionStore } from "@/features/filter/limit/model/option"
 
 export const GoNextPageButton = () => {
   const { limit, skip, setSkip } = useOptionStore()

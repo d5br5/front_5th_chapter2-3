@@ -2,7 +2,7 @@ import { useState } from "react"
 import { NewComment } from "@/entity/comment/model/types"
 import { addComment } from "@/entity/comment/api/addComment"
 import { useMutation } from "@tanstack/react-query"
-import { useDialogStore } from "@/store/dialog"
+import { useDialogStore } from "@/features/dialog/model/store"
 import { ADD_COMMENT_DIALOG } from "../ui/CommentAddDialog"
 
 const initialComment: NewComment = {

@@ -1,6 +1,7 @@
-import { useDialogStore } from "@/store/dialog"
-import { useSelectedPost } from "@/store/selectedPost"
-import { useSearchQueryStore } from "@/store/searchQuery"
+import { useSelectedPost } from "@/entity/post/model/selectedPost"
+import { useDialogStore } from "@/features/dialog/model/store"
+
+import { useSearchQueryStore } from "@/features/filter/search/model/store"
 import { highlightText } from "@/shared/lib/highlightText"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/ui"
 

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { useSearchQueryStore } from "../../../store/searchQuery"
+import { useSearchQueryStore } from "../../../features/filter/search/model/store"
 import { searchPosts } from "../api/searchPosts"
 
 export const useSearchPosts = () => {

@@ -4,7 +4,7 @@ import { CommentDeleteButton } from "@/features/comment/delete-button"
 import { CommentEditButton } from "@/features/comment/edit-button"
 import { CommentLikeButton } from "@/features/comment/like-button"
 import { highlightText } from "@/shared/lib/highlightText"
-import { useSearchQueryStore } from "@/store/searchQuery"
+import { useSearchQueryStore } from "@/features/filter/search/model/store"
 
 interface CommentListProps {
   postId: number

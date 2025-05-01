@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query"
 import { editComment } from "@/entity/comment/api/editComment"
-import { useSelectedComment } from "@/store/selectedComment"
+import { useSelectedComment } from "@/entity/comment/model/selectedComment"
 import { useEffect, useState } from "react"
 import { EDIT_COMMENT_DIALOG } from ".."
-import { useDialogStore } from "@/store/dialog"
+import { useDialogStore } from "@/features/dialog/model/store"
 
 export const useEditComment = () => {
   const { setDialogOpen } = useDialogStore()

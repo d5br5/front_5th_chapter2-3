@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Input, Textarea } from "@/shared/ui"
-import { useDialogStore } from "@/store/dialog"
+import { useDialogStore } from "@/features/dialog/model/store"
 import { useNewPost } from "./model/useNewPost"
 
 export const ADD_POST_DIALOG = "ADD_POST_DIALOG"

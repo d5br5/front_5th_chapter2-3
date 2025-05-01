@@ -1,5 +1,5 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/ui"
-import { useSelectedUser } from "@/store/selectedUser"
+import { useSelectedUser } from "@/entity/user/model/selectedUser"
 import { useUserDetail } from "@/entity/user/model/useUserDetail"
 
 export const UserModal = () => {

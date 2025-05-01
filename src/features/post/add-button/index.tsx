@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react"
 
 import { Button } from "@/shared/ui"
-import { useDialogStore } from "@/store/dialog"
+import { useDialogStore } from "@/features/dialog/model/store"
 import { ADD_POST_DIALOG } from "@/features/post/add-dialog"
 
 export const PostAddButton = () => {

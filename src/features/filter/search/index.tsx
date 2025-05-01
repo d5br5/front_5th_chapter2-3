@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Search } from "lucide-react"
 
 import { Input } from "@/shared/ui"
-import { useSearchQueryStore } from "@/store/searchQuery"
+import { useSearchQueryStore } from "@/features/filter/search/model/store"
 
 export const SearchInput = () => {
   const [input, setInput] = useState("")

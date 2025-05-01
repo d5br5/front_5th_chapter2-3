@@ -1,6 +1,6 @@
 import { addPost } from "@/entity/post/api/addPost"
 import { NewPost } from "@/entity/post/model/types"
-import { useDialogStore } from "@/store/dialog"
+import { useDialogStore } from "@/features/dialog/model/store"
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 import { ADD_POST_DIALOG } from ".."

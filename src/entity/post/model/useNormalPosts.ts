@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { useOptionStore } from "@/store/option"
+import { useOptionStore } from "@/features/filter/limit/model/option"
 import { getPosts } from "../api/getPosts"
 
 export const useNormalPosts = () => {

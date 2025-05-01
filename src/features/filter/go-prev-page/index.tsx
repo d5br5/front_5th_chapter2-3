@@ -1,5 +1,5 @@
 import { Button } from "@/shared/ui"
-import { useOptionStore } from "@/store/option"
+import { useOptionStore } from "@/features/filter/limit/model/option"
 
 export const GoPrevPageButton = () => {
   const { limit, skip, setSkip } = useOptionStore()

@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query"
 import { editPost } from "@/entity/post/api/editPost"
-import { useSelectedPost } from "@/store/selectedPost"
+import { useSelectedPost } from "@/entity/post/model/selectedPost"
 import { EDIT_POST_DIALOG } from "../EditPostDialog"
-import { useDialogStore } from "@/store/dialog"
+import { useDialogStore } from "@/features/dialog/model/store"
 
 export const useEditPost = () => {
   const { selectedPost } = useSelectedPost()

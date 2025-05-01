@@ -1,6 +1,6 @@
 import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Textarea } from "@/shared/ui"
-import { useDialogStore } from "@/store/dialog"
-import { useSelectedComment } from "@/store/selectedComment"
+import { useDialogStore } from "@/features/dialog/model/store"
+import { useSelectedComment } from "@/entity/comment/model/selectedComment"
 import { useEditComment } from "./model/useEditComment"
 
 export const EDIT_COMMENT_DIALOG = "EDIT_COMMENT_DIALOG"

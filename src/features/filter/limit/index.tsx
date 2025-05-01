@@ -1,5 +1,5 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui"
-import { useOptionStore } from "@/store/option"
+import { useOptionStore } from "@/features/filter/limit/model/option"
 
 export const LimitSelect = () => {
   const { limit, setLimit } = useOptionStore()

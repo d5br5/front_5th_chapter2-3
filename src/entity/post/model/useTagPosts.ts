@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 
-import { useSelectedTag } from "../../../store/selectedTag"
+import { useSelectedTag } from "../../tag/model/selectedTag"
 import { getTagPosts } from "../api/getTagPosts"
 
 export const useTagPosts = () => {

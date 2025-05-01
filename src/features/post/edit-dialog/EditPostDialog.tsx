@@ -1,6 +1,6 @@
-import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Input, Textarea } from "../../../shared/ui"
-import { useDialogStore } from "../../../store/dialog"
-import { useSelectedPost } from "../../../store/selectedPost"
+import { useSelectedPost } from "@/entity/post/model/selectedPost"
+import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Input, Textarea } from "@/shared/ui"
+import { useDialogStore } from "@/features/dialog/model/store"
 import { useEditPost } from "./model/useEditPost"
 
 export const EDIT_POST_DIALOG = "EDIT_POST_DIALOG"

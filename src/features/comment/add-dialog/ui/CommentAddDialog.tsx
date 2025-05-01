@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Textarea } from "@/shared/ui"
-import { useDialogStore } from "@/store/dialog"
+import { useDialogStore } from "@/features/dialog/model/store"
 import { useNewComment } from "../model/useNewComment"
 
 export const ADD_COMMENT_DIALOG = "ADD_COMMENT_DIALOG"

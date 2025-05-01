@@ -1,6 +1,6 @@
-import { useOptionStore } from "@/store/option"
-import { useSearchQueryStore } from "@/store/searchQuery"
-import { useSelectedTag } from "@/store/selectedTag"
+import { useOptionStore } from "@/features/filter/limit/model/option"
+import { useSearchQueryStore } from "@/features/filter/search/model/store"
+import { useSelectedTag } from "@/entity/tag/model/selectedTag"
 import { useCallback, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 
