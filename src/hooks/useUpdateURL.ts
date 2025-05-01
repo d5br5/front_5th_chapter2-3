@@ -19,15 +19,6 @@ export const useUpdateURL = () => {
   //   }
 
   //   useEffect(() => {
-  //     if (selectedTag) {
-  //       fetchPostsByTag(selectedTag)
-  //     } else {
-  //       fetchPosts()
-  //     }
-  //     updateURL()
-  //   }, [skip, limit, sortBy, sortOrder, selectedTag])
-
-  //   useEffect(() => {
   //     const params = new URLSearchParams(location.search)
   //     setSkip(parseInt(params.get("skip") || "0"))
   //     setLimit(parseInt(params.get("limit") || "10"))
