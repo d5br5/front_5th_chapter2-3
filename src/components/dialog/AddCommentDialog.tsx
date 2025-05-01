@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Textarea } from "../shared/ui"
-import { useDialogStore } from "../store/dialog"
+import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Textarea } from "../../shared/ui"
+import { useDialogStore } from "../../store/dialog"
 
 export const ADD_COMMENT_DIALOG = "ADD_COMMENT_DIALOG"
 

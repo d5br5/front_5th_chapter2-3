@@ -1,5 +1,5 @@
-import { useTags } from "../../hooks/useTags"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../shared/ui"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui"
+import { useTags } from "@/entity/tag/model/useTags"
 import { useSelectedTag } from "../../store/selectedTag"
 
 export const TagSelect = () => {

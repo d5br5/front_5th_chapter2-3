@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/shared/ui"
 
 import { UserModal } from "@/components/dialog/UserModal"
-import { AddCommentDialog } from "../components/AddCommentDialog"
+import { AddCommentDialog } from "../components/dialog/AddCommentDialog"
 import { EditPostDialog } from "../components/dialog/EditPostDialog"
 import { EditCommentDialog } from "../components/dialog/EditCommentDialog"
 import { AddPostDialog } from "../components/dialog/AddPostDialog"
