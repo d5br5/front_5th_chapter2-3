@@ -35,6 +35,7 @@ import { PostDetailDialog } from "../components/PostDetailDialog"
 import { useSelectedTag } from "../store/selectedTag"
 import { UserPost } from "../hooks/useUserPosts"
 import { PostRow } from "../components/PostRow"
+import { AddCommentDialog } from "../components/AddCommentDialog"
 
 const PostsManager = () => {
   const navigate = useNavigate()
@@ -62,8 +63,7 @@ const PostsManager = () => {
 
   const [comments, setComments] = useState({})
   const [selectedComment, setSelectedComment] = useState(null)
-  const [newComment, setNewComment] = useState({ body: "", postId: null, userId: 1 })
-  const [showAddCommentDialog, setShowAddCommentDialog] = useState(false)
+
   const [showEditCommentDialog, setShowEditCommentDialog] = useState(false)
 
   // URL 업데이트 함수
@@ -184,26 +184,6 @@ const PostsManager = () => {
       setShowEditDialog(false)
     } catch (error) {
       console.error("게시물 업데이트 오류:", error)
-    }
-  }
-
-  // 댓글 추가
-  const addComment = async () => {
-    try {
-      const response = await fetch("/api/comments/add", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newComment),
-      })
-      const data = await response.json()
-      setComments((prev) => ({
-        ...prev,
-        [data.postId]: [...(prev[data.postId] || []), data],
-      }))
-      setShowAddCommentDialog(false)
-      setNewComment({ body: "", postId: null, userId: 1 })
-    } catch (error) {
-      console.error("댓글 추가 오류:", error)
     }
   }
 
@@ -418,21 +398,7 @@ const PostsManager = () => {
       </Dialog>
 
       {/* 댓글 추가 대화상자 */}
-      <Dialog open={showAddCommentDialog} onOpenChange={setShowAddCommentDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>새 댓글 추가</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <Textarea
-              placeholder="댓글 내용"
-              value={newComment.body}
-              onChange={(e) => setNewComment({ ...newComment, body: e.target.value })}
-            />
-            <Button onClick={addComment}>댓글 추가</Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <AddCommentDialog />
 
       {/* 댓글 수정 대화상자 */}
       <Dialog open={showEditCommentDialog} onOpenChange={setShowEditCommentDialog}>
@@ -451,6 +417,7 @@ const PostsManager = () => {
         </DialogContent>
       </Dialog>
 
+      {/* 게시물 상세 대화상자 */}
       <PostDetailDialog />
       <UserModal />
     </Card>
