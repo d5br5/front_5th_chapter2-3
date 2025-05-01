@@ -37,6 +37,7 @@ import { UserPost } from "../hooks/useUserPosts"
 import { PostRow } from "../components/PostRow"
 import { AddCommentDialog } from "../components/AddCommentDialog"
 import { EditPostDialog } from "../components/dialog/EditPostDialog"
+import { EditCommentDialog } from "../components/dialog/EditCommentDialog"
 
 const PostsManager = () => {
   const navigate = useNavigate()
@@ -60,11 +61,6 @@ const PostsManager = () => {
   const { data: tags } = useTags()
   const { selectedTag, setSelectedTag } = useSelectedTag()
   // const [selectedTag, setSelectedTag] = useState(queryParams.get("tag") || "")
-
-  const [comments, setComments] = useState({})
-  const [selectedComment, setSelectedComment] = useState(null)
-
-  const [showEditCommentDialog, setShowEditCommentDialog] = useState(false)
 
   // URL 업데이트 함수
   const updateURL = () => {
@@ -168,25 +164,6 @@ const PostsManager = () => {
       setNewPost({ title: "", body: "", userId: 1 })
     } catch (error) {
       console.error("게시물 추가 오류:", error)
-    }
-  }
-
-  // 댓글 업데이트
-  const updateComment = async () => {
-    try {
-      const response = await fetch(`/api/comments/${selectedComment.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ body: selectedComment.body }),
-      })
-      const data = await response.json()
-      setComments((prev) => ({
-        ...prev,
-        [data.postId]: prev[data.postId].map((comment) => (comment.id === data.id ? data : comment)),
-      }))
-      setShowEditCommentDialog(false)
-    } catch (error) {
-      console.error("댓글 업데이트 오류:", error)
     }
   }
 
@@ -364,21 +341,7 @@ const PostsManager = () => {
       <AddCommentDialog />
 
       {/* 댓글 수정 대화상자 */}
-      <Dialog open={showEditCommentDialog} onOpenChange={setShowEditCommentDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>댓글 수정</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <Textarea
-              placeholder="댓글 내용"
-              value={selectedComment?.body || ""}
-              onChange={(e) => setSelectedComment({ ...selectedComment, body: e.target.value })}
-            />
-            <Button onClick={updateComment}>댓글 업데이트</Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <EditCommentDialog />
 
       {/* 게시물 상세 대화상자 */}
       <PostDetailDialog />

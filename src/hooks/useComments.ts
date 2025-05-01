@@ -2,7 +2,7 @@ import axios from "axios"
 import { useQuery } from "@tanstack/react-query"
 import { User } from "./useUsers"
 
-interface Comment {
+export interface Comment {
   body: string
   id: number
   likes: number
