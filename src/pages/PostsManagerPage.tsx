@@ -7,12 +7,11 @@ import { EditCommentDialog } from "../components/dialog/EditCommentDialog"
 import { AddPostDialog } from "../components/dialog/AddPostDialog"
 import { PostDetailDialog } from "../components/dialog/PostDetailDialog"
 import { useUpdateURL } from "../hooks/useUpdateURL"
-import { LimitSelector } from "../components/selector/LimitSelector"
-import { Pagination } from "../components/selector/Pagination"
 
 import { PostTable } from "@/components/PostTable"
 import { AdminHeader } from "@/widgets/admin/ui/Header"
 import { PostFilter } from "@/widgets/admin/ui/PostFilter"
+import { AdminNav } from "@/widgets/admin/ui/Footer"
 
 const PostsManager = () => {
   useUpdateURL()
@@ -24,12 +23,7 @@ const PostsManager = () => {
         <div className="flex flex-col gap-4">
           <PostFilter />
           <PostTable />
-
-          {/* 페이지네이션 */}
-          <div className="flex justify-between items-center">
-            <LimitSelector />
-            <Pagination />
-          </div>
+          <AdminNav />
         </div>
       </CardContent>
 
