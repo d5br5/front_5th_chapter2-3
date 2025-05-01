@@ -17,3 +17,9 @@ export interface GetPostsResponse {
   total: number
   posts: Post[]
 }
+
+export interface NewPost {
+  title: string
+  body: string
+  userId: number
+}

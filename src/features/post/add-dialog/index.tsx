@@ -1,30 +1,12 @@
-import { useState } from "react"
-import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Input, Textarea } from "../../shared/ui"
-import { useDialogStore } from "../../store/dialog"
+import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Input, Textarea } from "@/shared/ui"
+import { useDialogStore } from "@/store/dialog"
+import { useNewPost } from "./model/useNewPost"
 
 export const ADD_POST_DIALOG = "ADD_POST_DIALOG"
 
 export const AddPostDialog = () => {
   const { isDialogOpen, setDialogOpen } = useDialogStore()
-
-  const [newPost, setNewPost] = useState({ title: "", body: "", userId: 1 })
-
-  // 게시물 추가
-  const addPost = async () => {
-    try {
-      const response = await fetch("/api/posts/add", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newPost),
-      })
-      const data = await response.json()
-      //   setPosts([data, ...posts])
-      setDialogOpen(ADD_POST_DIALOG, false)
-      setNewPost({ title: "", body: "", userId: 1 })
-    } catch (error) {
-      console.error("게시물 추가 오류:", error)
-    }
-  }
+  const { newPost, setNewPost, mutation } = useNewPost()
 
   return (
     <Dialog open={isDialogOpen(ADD_POST_DIALOG)} onOpenChange={(open) => setDialogOpen(ADD_POST_DIALOG, open)}>
@@ -50,7 +32,7 @@ export const AddPostDialog = () => {
             value={newPost.userId}
             onChange={(e) => setNewPost({ ...newPost, userId: Number(e.target.value) })}
           />
-          <Button onClick={addPost}>게시물 추가</Button>
+          <Button onClick={() => mutation.mutate()}>게시물 추가</Button>
         </div>
       </DialogContent>
     </Dialog>
