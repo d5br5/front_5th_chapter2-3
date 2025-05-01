@@ -2,7 +2,7 @@ import { Edit2, MessageSquare, ThumbsDown, ThumbsUp, Trash2 } from "lucide-react
 import { Button, TableCell, TableRow } from "../shared/ui"
 import { useSelectedPost } from "../store/selectedPost"
 import { useSearchQueryStore } from "../store/searchQuery"
-import { highlightText } from "../utils"
+import { highlightText } from "../shared/lib/highlightText"
 
 import { useDialogStore } from "../store/dialog"
 

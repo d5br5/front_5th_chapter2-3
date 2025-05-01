@@ -2,7 +2,7 @@ import { Edit2, Plus, ThumbsUp, Trash2 } from "lucide-react"
 import { useDialogStore } from "../../store/dialog"
 import { useSelectedPost } from "../../store/selectedPost"
 import { useSearchQueryStore } from "../../store/searchQuery"
-import { highlightText } from "../../utils"
+import { highlightText } from "../../shared/lib/highlightText"
 import { Button, Dialog, DialogContent, DialogHeader, DialogTitle } from "../../shared/ui"
 import { useComments } from "../../hooks/useComments"
 
