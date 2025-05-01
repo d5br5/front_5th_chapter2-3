@@ -1,7 +1,8 @@
 import { useMemo } from "react"
-
-import { User, useUsers } from "../entity/user/model/useUsers"
-import { Post, usePosts } from "../entity/post/model/usePosts"
+import { Post } from "./types"
+import { User } from "@/entity/user/model/types"
+import { useUsers } from "@/entity/user/model/useUsers"
+import { usePosts } from "./usePosts"
 
 export interface UserPost extends Post {
   author: User | null

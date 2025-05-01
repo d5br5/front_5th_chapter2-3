@@ -1,4 +1,4 @@
-import { useUserPosts } from "@/hooks/useUserPosts"
+import { useUserPosts } from "@/entity/post/model/useUserPosts"
 import { Button } from "@/shared/ui"
 import { useOptionStore } from "@/store/option"
 

@@ -1,4 +1,4 @@
-import { useUserPosts } from "../hooks/useUserPosts"
+import { useUserPosts } from "../entity/post/model/useUserPosts"
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "../shared/ui"
 import { PostRow } from "./PostRow"
 
