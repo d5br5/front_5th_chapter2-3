@@ -1,12 +1,14 @@
 import { useSelectedPost } from "@/entity/post/model/selectedPost"
 import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Input, Textarea } from "@/shared/ui"
 import { useDialogStore } from "@/features/dialog/model/store"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { editPost } from "@/entity/post/api/editPost"
+import { GetPostsResponse } from "@/entity/post/model/types"
 
 export const EDIT_POST_DIALOG = "EDIT_POST_DIALOG"
 
 export const EditPostDialog = () => {
+  const queryClient = useQueryClient()
   const { selectedPost, setSelectedPost } = useSelectedPost()
   const { isDialogOpen, setDialogOpen, closeDialog } = useDialogStore()
 
@@ -17,7 +19,13 @@ export const EditPostDialog = () => {
     onSuccess: (data) => {
       closeDialog(EDIT_POST_DIALOG)
       // 기존 게시물 목록 수정
-      console.log(data)
+      queryClient.setQueriesData({ queryKey: ["posts"] }, (old: GetPostsResponse) => {
+        if (!old) return
+        return {
+          ...old,
+          posts: old.posts.map((post) => (post.id === data.id ? data : post)),
+        }
+      })
     },
     onError: (error) => {
       console.error("게시물 수정 오류:", error)
