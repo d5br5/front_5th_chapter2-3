@@ -1,14 +1,11 @@
-import { useComments } from "@/entity/comment/model/useComments"
-import { CommentAddButton } from "@/entity/comment/ui/AddButton"
-
-import { CommentLikeButton } from "@/features/comment/like-button"
 import { highlightText } from "@/shared/lib/highlightText"
 
-import { useDialogStore } from "@/features/dialog/model/store"
-import { ADD_COMMENT_DIALOG } from "@/widgets/comment/add-dialog"
+import { useComments } from "@/entity/comment/model/useComments"
 import { CommentDelete } from "@/features/comment/delete"
 import { useSearchStore } from "@/features/search/model/useSearchStore"
 import { OpenCommentEditDialog } from "@/features/comment/open-edit-dialog"
+import { CommentLike } from "@/features/comment/like"
+import { OpenCommentAddDialog } from "@/features/comment/open-add-dialog"
 
 interface CommentListProps {
   postId: number
@@ -17,7 +14,6 @@ interface CommentListProps {
 export const CommentList = ({ postId }: CommentListProps) => {
   const { data: comments } = useComments(postId)
   const { searchQuery } = useSearchStore()
-  const { setDialogOpen } = useDialogStore()
 
   if (!comments) return null
 
@@ -25,7 +21,7 @@ export const CommentList = ({ postId }: CommentListProps) => {
     <div className="mt-2">
       <div className="flex items-center justify-between mb-2">
         <h3 className="text-sm font-semibold">댓글</h3>
-        <CommentAddButton onClick={() => setDialogOpen(ADD_COMMENT_DIALOG, true)} />
+        <OpenCommentAddDialog />
       </div>
       <div className="space-y-1">
         {comments.comments.map((comment) => (
@@ -35,9 +31,9 @@ export const CommentList = ({ postId }: CommentListProps) => {
               <span className="truncate">{highlightText(comment.body, searchQuery)}</span>
             </div>
             <div className="flex items-center space-x-1">
-              <CommentLikeButton comment={comment} />
+              <CommentLike comment={comment} />
               <OpenCommentEditDialog comment={comment} />
-              <CommentDelete comment={comment} postId={postId} />
+              <CommentDelete comment={comment} />
             </div>
           </div>
         ))}

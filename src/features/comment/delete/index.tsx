@@ -3,11 +3,11 @@ import { Comment } from "@/entity/comment/model/types"
 import { CommentDeleteButton } from "@/entity/comment/ui/DeleteButton"
 import { useMutation } from "@tanstack/react-query"
 
-export const CommentDelete = ({ comment, postId }: { comment: Comment; postId: number }) => {
+export const CommentDelete = ({ comment }: { comment: Comment }) => {
   const { mutate } = useMutation({
     mutationFn: () => deleteComment(comment.id),
     onSuccess: () => {
-      console.log(postId)
+      console.log(comment.postId)
       // 기존 댓글 목록에서 제거
       //setComments((prev) => ({
       //       ...prev,
