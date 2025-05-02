@@ -1,4 +1,4 @@
-import { TagSelect } from "@/features/filter/tag"
+import { TagSelect } from "@/features/tag/select"
 import { SearchInput } from "@/features/filter/search"
 import { SortBySelect } from "@/features/filter/sort-by"
 import { SortOrderSelector } from "@/features/filter/sort-order"

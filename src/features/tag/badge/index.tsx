@@ -3,6 +3,7 @@ import { cn } from "@/shared/lib/cn"
 
 export const TagBadge = ({ tag }: { tag: string }) => {
   const { selectedTag, setSelectedTag } = useSelectedTag()
+
   return (
     <span
       onClick={() => setSelectedTag(tag)}

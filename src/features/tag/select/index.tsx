@@ -1,20 +1,13 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui"
 import { useTags } from "@/entity/tag/model/useTags"
-import { useSelectedTag } from "../../../entity/tag/model/selectedTag"
+import { useSelectedTag } from "@/entity/tag/model/selectedTag"
 
 export const TagSelect = () => {
   const { data: tags } = useTags()
   const { selectedTag, setSelectedTag } = useSelectedTag()
 
   return (
-    <Select
-      value={selectedTag}
-      onValueChange={(value) => {
-        setSelectedTag(value)
-        // fetchPostsByTag(value)
-        // updateURL()
-      }}
-    >
+    <Select value={selectedTag} onValueChange={setSelectedTag}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="태그 선택" />
       </SelectTrigger>
