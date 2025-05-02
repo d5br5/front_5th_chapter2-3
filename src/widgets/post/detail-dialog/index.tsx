@@ -21,7 +21,7 @@ export const PostDetailDialog = () => {
         <DialogHeader>
           <DialogTitle>{highlightText(selectedPost.title, searchQuery)}</DialogTitle>
         </DialogHeader>
-        <div className="space-y-4">
+        <div className="space-y-4 w-full max-w-md">
           <p>{highlightText(selectedPost.body, searchQuery)}</p>
           <CommentList postId={selectedPost.id} />
         </div>
