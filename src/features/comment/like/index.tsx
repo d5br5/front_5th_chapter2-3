@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 export const CommentLike = ({ comment }: { comment: Comment }) => {
   const queryClient = useQueryClient()
+
   const { mutate } = useMutation({
     mutationFn: () => likeComment(comment.id, comment.likes + 1),
     onSuccess: (data) => {
