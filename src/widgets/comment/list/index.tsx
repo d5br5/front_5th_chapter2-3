@@ -1,10 +1,12 @@
 import { useComments } from "@/entity/comment/model/useComments"
-import { CommentAddButton } from "@/features/comment/add-button"
+import { CommentAddButton } from "@/entity/comment/ui/AddButton"
 import { CommentDeleteButton } from "@/features/comment/delete-button"
 import { CommentEditButton } from "@/features/comment/edit-button"
 import { CommentLikeButton } from "@/features/comment/like-button"
 import { highlightText } from "@/shared/lib/highlightText"
 import { useSearchQueryStore } from "@/features/filter/search/model/store"
+import { useDialogStore } from "@/features/dialog/model/store"
+import { ADD_COMMENT_DIALOG } from "@/features/comment/add-dialog/ui/CommentAddDialog"
 
 interface CommentListProps {
   postId: number
@@ -13,6 +15,7 @@ interface CommentListProps {
 export const CommentList = ({ postId }: CommentListProps) => {
   const { data: comments } = useComments(postId)
   const { searchQuery } = useSearchQueryStore()
+  const { setDialogOpen } = useDialogStore()
 
   if (!comments) return null
 
@@ -20,7 +23,7 @@ export const CommentList = ({ postId }: CommentListProps) => {
     <div className="mt-2">
       <div className="flex items-center justify-between mb-2">
         <h3 className="text-sm font-semibold">댓글</h3>
-        <CommentAddButton />
+        <CommentAddButton onClick={() => setDialogOpen(ADD_COMMENT_DIALOG, true)} />
       </div>
       <div className="space-y-1">
         {comments.comments.map((comment) => (
