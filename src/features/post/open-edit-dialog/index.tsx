@@ -1,24 +1,19 @@
 import { useSelectedPost } from "@/entity/post/model/selectedPost"
 import { UserPost } from "@/entity/post/model/useUserPosts"
 import { useDialogStore } from "@/features/dialog/model/store"
-import { Button } from "@/shared/ui"
-import { Edit2 } from "lucide-react"
 import { EDIT_POST_DIALOG } from "../edit-dialog/EditPostDialog"
+import { OpenPostEditDialogButton } from "@/entity/post/ui/OpenEditDialogButton"
 
 export const PostEditButton = ({ post }: { post: UserPost }) => {
-  const { setDialogOpen } = useDialogStore()
+  const { openDialog } = useDialogStore()
   const { setSelectedPost } = useSelectedPost()
 
   return (
-    <Button
-      variant="ghost"
-      size="sm"
+    <OpenPostEditDialogButton
       onClick={() => {
         setSelectedPost(post)
-        setDialogOpen(EDIT_POST_DIALOG, true)
+        openDialog(EDIT_POST_DIALOG)
       }}
-    >
-      <Edit2 className="w-4 h-4" />
-    </Button>
+    />
   )
 }

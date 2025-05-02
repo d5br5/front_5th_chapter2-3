@@ -10,7 +10,7 @@ import { POST_DETAIL_DIALOG } from "@/widgets/post/detail-dialog"
 import { UserPost } from "@/entity/post/model/useUserPosts"
 import { useSelectedPost } from "@/entity/post/model/selectedPost"
 import { useSelectedUser } from "@/entity/user/model/selectedUser"
-import { PostEditButton } from "@/features/post/edit-button"
+import { PostEditButton } from "@/features/post/open-edit-dialog"
 import { TagBadge } from "@/features/tag/badge"
 import { PostDelete } from "@/features/post/delete"
 
