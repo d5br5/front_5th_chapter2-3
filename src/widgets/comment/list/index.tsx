@@ -1,12 +1,12 @@
 import { useComments } from "@/entity/comment/model/useComments"
 import { CommentAddButton } from "@/entity/comment/ui/AddButton"
-import { CommentDeleteButton } from "@/features/comment/delete-button"
 import { CommentEditButton } from "@/features/comment/edit-button"
 import { CommentLikeButton } from "@/features/comment/like-button"
 import { highlightText } from "@/shared/lib/highlightText"
 import { useSearchQueryStore } from "@/features/filter/search/model/store"
 import { useDialogStore } from "@/features/dialog/model/store"
 import { ADD_COMMENT_DIALOG } from "@/features/comment/add-dialog/ui/CommentAddDialog"
+import { CommentDelete } from "@/features/comment/delete"
 
 interface CommentListProps {
   postId: number
@@ -35,7 +35,7 @@ export const CommentList = ({ postId }: CommentListProps) => {
             <div className="flex items-center space-x-1">
               <CommentLikeButton comment={comment} />
               <CommentEditButton comment={comment} />
-              <CommentDeleteButton comment={comment} />
+              <CommentDelete comment={comment} postId={postId} />
             </div>
           </div>
         ))}
