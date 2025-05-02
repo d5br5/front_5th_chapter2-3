@@ -8,7 +8,7 @@ import PostsManager from "../src/pages/PostsManagerPage"
 import * as React from "react"
 import "@testing-library/jest-dom"
 import { TEST_POSTS, TEST_SEARCH_POST, TEST_USERS } from "./mockData"
-import { QueryClientProvider } from "../src/components/QueryClientProvider"
+import { QueryClientProvider } from "../src/app/providers/QueryClientProvider"
 
 // MSW 서버 설정
 const server = setupServer(
