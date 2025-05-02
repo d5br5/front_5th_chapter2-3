@@ -1,5 +1,5 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui"
-import { usePaginationStore } from "./model/usePaginationStore"
+import { usePaginationStore } from "../../../features/pagination/model/usePaginationStore"
 
 export const LimitSelect = () => {
   const { limit, setLimit } = usePaginationStore()
