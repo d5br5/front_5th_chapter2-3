@@ -5,7 +5,7 @@ import { CommentLikeButton } from "@/features/comment/like-button"
 import { highlightText } from "@/shared/lib/highlightText"
 
 import { useDialogStore } from "@/features/dialog/model/store"
-import { ADD_COMMENT_DIALOG } from "@/features/comment/add-dialog/ui/CommentAddDialog"
+import { ADD_COMMENT_DIALOG } from "@/widgets/comment/add-dialog"
 import { CommentDelete } from "@/features/comment/delete"
 import { useSearchStore } from "@/features/search/model/useSearchStore"
 

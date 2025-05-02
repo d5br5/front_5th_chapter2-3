@@ -1,12 +1,31 @@
+import { useMutation } from "@tanstack/react-query"
+import { addComment } from "@/entity/comment/api/addComment"
 import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Textarea } from "@/shared/ui"
 import { useDialogStore } from "@/features/dialog/model/store"
-import { useNewComment } from "../model/useNewComment"
+import { useNewComment } from "@/features/comment/add/model/useNewComment"
 
 export const ADD_COMMENT_DIALOG = "ADD_COMMENT_DIALOG"
 
 export const AddCommentDialog = () => {
-  const { isDialogOpen, setDialogOpen } = useDialogStore()
-  const { newComment, setBody, mutation } = useNewComment()
+  const { isDialogOpen, setDialogOpen, closeDialog } = useDialogStore()
+  const { newComment, setBody, reset } = useNewComment()
+
+  const mutation = useMutation({
+    mutationFn: () => addComment(newComment),
+    onSuccess: (data) => {
+      reset()
+      closeDialog(ADD_COMMENT_DIALOG)
+      console.log(data)
+      // 기존 코멘트 목록에 추가
+      //   setComments((prev) => ({
+      //     ...prev,
+      //     [data.postId]: [...(prev[data.postId] || []), data],
+      //   }))
+    },
+    onError: (error) => {
+      console.error("댓글 추가 오류:", error)
+    },
+  })
 
   return (
     <Dialog open={isDialogOpen(ADD_COMMENT_DIALOG)} onOpenChange={(open) => setDialogOpen(ADD_COMMENT_DIALOG, open)}>
