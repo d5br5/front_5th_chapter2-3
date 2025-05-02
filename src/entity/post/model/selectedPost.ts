@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { Post } from "../entity/post/model/useNormalPosts"
+import { Post } from "./types"
 
 interface SelectedPostStore {
   selectedPost: Post | null

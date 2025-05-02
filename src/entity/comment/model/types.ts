@@ -3,7 +3,7 @@ import { User } from "@/entity/user/model/types"
 export interface NewComment {
   userId: number
   body: string
-  postId: null
+  postId: number | null
 }
 
 export interface Comment {

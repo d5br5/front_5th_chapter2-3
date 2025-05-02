@@ -14,7 +14,7 @@ export const EditPostDialog = () => {
 
   const mutation = useMutation({
     mutationFn: (postId: number) => {
-      return editPost(postId, selectedPost)
+      return editPost(postId, selectedPost!)
     },
     onSuccess: (data) => {
       closeDialog(EDIT_POST_DIALOG)

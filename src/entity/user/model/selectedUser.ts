@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { User } from "../entity/user/model/useUsers"
+import { User } from "./types"
 
 interface SelectedUserStore {
   selectedUser: User | null

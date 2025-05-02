@@ -15,7 +15,7 @@ export const AddCommentDialog = () => {
   const { newComment, setBody, reset } = useNewComment()
 
   const mutation = useMutation({
-    mutationFn: () => addComment({ ...newComment, postId: selectedPost?.id }),
+    mutationFn: () => addComment({ ...newComment, postId: selectedPost?.id ?? 1 }),
     onSuccess: (data) => {
       reset()
       closeDialog(ADD_COMMENT_DIALOG)

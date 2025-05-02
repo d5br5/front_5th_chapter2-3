@@ -4,7 +4,7 @@ import { useUserDetail } from "@/entity/user/model/useUserDetail"
 
 export const UserModal = () => {
   const { selectedUser, setSelectedUser } = useSelectedUser()
-  const { data: user } = useUserDetail(selectedUser?.id)
+  const { data: user } = useUserDetail(selectedUser?.id ?? 0)
 
   if (!user) return null
 
