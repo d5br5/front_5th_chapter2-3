@@ -1,18 +1,18 @@
 import { Card, CardContent } from "@/shared/ui"
 
-import { AddCommentDialog } from "../widgets/comment/add-dialog"
-import { EditPostDialog } from "../widgets/post/edit-dialog"
+import { useUpdateURL } from "@/features/url/model/useUpdateURL"
+import { UserModal } from "@/features/user/detail-dialog"
 
-import { AddPostDialog } from "../widgets/post/add-dialog"
-import { PostDetailDialog } from "../widgets/post/detail-dialog"
-import { useUpdateURL } from "../features/url/model/useUpdateURL"
+import { AddCommentDialog } from "@/widgets/comment/add-dialog"
+import { EditPostDialog } from "@/widgets/post/edit-dialog"
+import { AddPostDialog } from "@/widgets/post/add-dialog"
+import { PostDetailDialog } from "@/widgets/post/detail-dialog"
+import { EditCommentDialog } from "@/widgets/comment/edit-dialog"
 
 import { PostTable } from "@/widgets/post/table/PostTable"
 import { AdminHeader } from "@/widgets/post/header"
 import { PostFilter } from "@/widgets/post/filter"
 import { AdminNav } from "@/widgets/post/footer"
-import { UserModal } from "@/features/user/detail-dialog"
-import { EditCommentDialog } from "@/widgets/comment/edit-dialog"
 
 const PostsManager = () => {
   useUpdateURL()
