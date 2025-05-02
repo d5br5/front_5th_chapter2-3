@@ -11,8 +11,8 @@ import { UserPost } from "@/entity/post/model/useUserPosts"
 import { useSelectedPost } from "@/entity/post/model/selectedPost"
 import { useSelectedUser } from "@/entity/user/model/selectedUser"
 import { PostEditButton } from "@/features/post/edit-button"
-import { PostDeleteButton } from "@/features/post/delete-button"
 import { TagBadge } from "@/features/tag/badge"
+import { PostDelete } from "@/features/post/delete"
 
 interface PostRowProps {
   post: UserPost
@@ -59,7 +59,7 @@ export const PostRow = ({ post }: PostRowProps) => {
             <MessageSquare className="w-4 h-4" />
           </Button>
           <PostEditButton post={post} />
-          <PostDeleteButton post={post} />
+          <PostDelete postId={post.id} />
         </div>
       </TableCell>
     </TableRow>
