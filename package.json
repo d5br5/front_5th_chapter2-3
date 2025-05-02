@@ -3,17 +3,20 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://d5br5.github.io/front-5th-chapter2-3/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "deploy": "pnpm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.74.11",
     "clsx": "^2.1.1",
+    "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwind-merge": "^3.2.0",
