@@ -1,6 +1,6 @@
 import { useComments } from "@/entity/comment/model/useComments"
 import { CommentAddButton } from "@/entity/comment/ui/AddButton"
-import { CommentEditButton } from "@/features/comment/edit-button"
+
 import { CommentLikeButton } from "@/features/comment/like-button"
 import { highlightText } from "@/shared/lib/highlightText"
 
@@ -8,6 +8,7 @@ import { useDialogStore } from "@/features/dialog/model/store"
 import { ADD_COMMENT_DIALOG } from "@/widgets/comment/add-dialog"
 import { CommentDelete } from "@/features/comment/delete"
 import { useSearchStore } from "@/features/search/model/useSearchStore"
+import { OpenCommentEditDialog } from "@/features/comment/open-edit-dialog"
 
 interface CommentListProps {
   postId: number
@@ -35,7 +36,7 @@ export const CommentList = ({ postId }: CommentListProps) => {
             </div>
             <div className="flex items-center space-x-1">
               <CommentLikeButton comment={comment} />
-              <CommentEditButton comment={comment} />
+              <OpenCommentEditDialog comment={comment} />
               <CommentDelete comment={comment} postId={postId} />
             </div>
           </div>

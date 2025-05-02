@@ -12,7 +12,7 @@ import { AdminHeader } from "@/widgets/post/header"
 import { PostFilter } from "@/widgets/post/filter"
 import { AdminNav } from "@/widgets/post/footer"
 import { UserModal } from "@/features/user/detail-dialog"
-import { EditCommentDialog } from "@/features/comment/edit-dialog"
+import { EditCommentDialog } from "@/widgets/comment/edit-dialog"
 
 const PostsManager = () => {
   useUpdateURL()
