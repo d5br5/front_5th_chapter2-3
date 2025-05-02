@@ -1,8 +1,8 @@
+import { useSortStore } from "@/features/sort/model/useSortStore"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui"
-import { useOptionStore } from "@/features/filter/limit/model/option"
 
 export const SortOrderSelector = () => {
-  const { sortOrder, setSortOrder } = useOptionStore()
+  const { sortOrder, setSortOrder } = useSortStore()
 
   return (
     <Select value={sortOrder} onValueChange={setSortOrder}>

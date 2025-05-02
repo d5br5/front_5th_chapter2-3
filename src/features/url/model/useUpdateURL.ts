@@ -1,6 +1,7 @@
-import { useOptionStore } from "@/features/filter/limit/model/option"
-import { useSearchQueryStore } from "@/features/filter/search/model/store"
 import { useSelectedTag } from "@/entity/tag/model/selectedTag"
+import { usePaginationStore } from "@/features/pagination/model/usePaginationStore"
+import { useSearchStore } from "@/features/search/model/useSearchStore"
+import { useSortStore } from "@/features/sort/model/useSortStore"
 import { useCallback, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 
@@ -9,8 +10,9 @@ export const useUpdateURL = () => {
   const location = useLocation()
 
   // Store에서 상태와 setter 함수들을 가져옵니다
-  const { skip, limit, sortBy, sortOrder, setSkip, setLimit, setSortBy, setSortOrder } = useOptionStore()
-  const { searchQuery, setSearchQuery } = useSearchQueryStore()
+  const { skip, limit, setSkip, setLimit } = usePaginationStore()
+  const { sortBy, sortOrder, setSortBy, setSortOrder } = useSortStore()
+  const { searchQuery, setSearchQuery } = useSearchStore()
   const { selectedTag, setSelectedTag } = useSelectedTag()
 
   // URL 업데이트 함수

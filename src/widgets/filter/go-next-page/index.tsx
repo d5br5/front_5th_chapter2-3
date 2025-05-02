@@ -1,9 +1,9 @@
 import { useUserPosts } from "@/entity/post/model/useUserPosts"
+import { usePaginationStore } from "@/features/pagination/model/usePaginationStore"
 import { Button } from "@/shared/ui"
-import { useOptionStore } from "@/features/filter/limit/model/option"
 
 export const GoNextPageButton = () => {
-  const { limit, skip, setSkip } = useOptionStore()
+  const { limit, skip, setSkip } = usePaginationStore()
   const { data } = useUserPosts()
 
   const isDisabled = !data || skip + limit >= data?.total

@@ -1,8 +1,8 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui"
-import { useLimitStore } from "./model/useLimitStore"
+import { usePaginationStore } from "./model/usePaginationStore"
 
 export const LimitSelect = () => {
-  const { limit, setLimit } = useLimitStore()
+  const { limit, setLimit } = usePaginationStore()
 
   return (
     <div className="flex items-center gap-2">

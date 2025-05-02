@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query"
-import { useOptionStore } from "@/features/filter/limit/model/option"
+
 import { getPosts } from "../api/getPosts"
+import { usePaginationStore } from "@/features/pagination/model/usePaginationStore"
 
 export const useNormalPosts = () => {
-  const { limit, skip } = useOptionStore()
+  const { limit, skip } = usePaginationStore()
+
   return useQuery({
     queryKey: ["posts", { limit, skip }],
     queryFn: async () => {

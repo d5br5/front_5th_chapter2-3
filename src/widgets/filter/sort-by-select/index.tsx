@@ -1,8 +1,8 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../shared/ui"
-import { useOptionStore } from "../limit/model/option"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui"
+import { useSortStore } from "@/features/sort/model/useSortStore"
 
 export const SortBySelect = () => {
-  const { sortBy, setSortBy } = useOptionStore()
+  const { sortBy, setSortBy } = useSortStore()
 
   return (
     <Select value={sortBy} onValueChange={setSortBy}>

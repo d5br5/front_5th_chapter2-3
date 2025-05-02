@@ -1,8 +1,8 @@
 import { Button } from "@/shared/ui"
-import { useOptionStore } from "@/features/filter/limit/model/option"
+import { usePaginationStore } from "@/features/pagination/model/usePaginationStore"
 
 export const GoPrevPageButton = () => {
-  const { limit, skip, setSkip } = useOptionStore()
+  const { limit, skip, setSkip } = usePaginationStore()
 
   const isDisabled = skip === 0
 
