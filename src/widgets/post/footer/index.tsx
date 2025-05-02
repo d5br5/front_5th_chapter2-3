@@ -1,6 +1,6 @@
-import { LimitSelect } from "@/features/filter/limit"
 import { GoNextPageButton } from "@/features/filter/go-next-page"
 import { GoPrevPageButton } from "@/features/filter/go-prev-page"
+import { LimitSelect } from "@/features/limit"
 
 export const AdminNav = () => {
   return (

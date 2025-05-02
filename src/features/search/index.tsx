@@ -2,11 +2,11 @@ import { useState } from "react"
 import { Search } from "lucide-react"
 
 import { Input } from "@/shared/ui"
-import { useSearchQueryStore } from "@/features/filter/search/model/store"
+import { useSearchStore } from "@/features/search/model/useSearchStore"
 
 export const SearchInput = () => {
   const [input, setInput] = useState("")
-  const { setSearchQuery } = useSearchQueryStore()
+  const { setSearchQuery } = useSearchStore()
 
   return (
     <div className="flex-1">

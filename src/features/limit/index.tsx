@@ -1,8 +1,8 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui"
-import { useOptionStore } from "@/features/filter/limit/model/option"
+import { useLimitStore } from "./model/useLimitStore"
 
 export const LimitSelect = () => {
-  const { limit, setLimit } = useOptionStore()
+  const { limit, setLimit } = useLimitStore()
 
   return (
     <div className="flex items-center gap-2">

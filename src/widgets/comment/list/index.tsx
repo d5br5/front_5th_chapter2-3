@@ -3,10 +3,11 @@ import { CommentAddButton } from "@/entity/comment/ui/AddButton"
 import { CommentEditButton } from "@/features/comment/edit-button"
 import { CommentLikeButton } from "@/features/comment/like-button"
 import { highlightText } from "@/shared/lib/highlightText"
-import { useSearchQueryStore } from "@/features/filter/search/model/store"
+
 import { useDialogStore } from "@/features/dialog/model/store"
 import { ADD_COMMENT_DIALOG } from "@/features/comment/add-dialog/ui/CommentAddDialog"
 import { CommentDelete } from "@/features/comment/delete"
+import { useSearchStore } from "@/features/search/model/useSearchStore"
 
 interface CommentListProps {
   postId: number
@@ -14,7 +15,7 @@ interface CommentListProps {
 
 export const CommentList = ({ postId }: CommentListProps) => {
   const { data: comments } = useComments(postId)
-  const { searchQuery } = useSearchQueryStore()
+  const { searchQuery } = useSearchStore()
   const { setDialogOpen } = useDialogStore()
 
   if (!comments) return null

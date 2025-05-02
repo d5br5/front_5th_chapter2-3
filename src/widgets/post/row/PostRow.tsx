@@ -1,7 +1,7 @@
 import { MessageSquare, ThumbsDown, ThumbsUp } from "lucide-react"
 import { Button, TableCell, TableRow } from "@/shared/ui"
 
-import { useSearchQueryStore } from "@/features/filter/search/model/store"
+import { useSearchStore } from "@/features/search/model/useSearchStore"
 import { highlightText } from "@/shared/lib/highlightText"
 
 import { useDialogStore } from "@/features/dialog/model/store"
@@ -19,7 +19,7 @@ interface PostRowProps {
 }
 
 export const PostRow = ({ post }: PostRowProps) => {
-  const { searchQuery } = useSearchQueryStore()
+  const { searchQuery } = useSearchStore()
   const { setSelectedPost } = useSelectedPost()
   const { setDialogOpen } = useDialogStore()
   const { setSelectedUser } = useSelectedUser()
