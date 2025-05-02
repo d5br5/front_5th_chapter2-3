@@ -1,12 +1,14 @@
 import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Input, Textarea } from "@/shared/ui"
 import { useDialogStore } from "@/features/dialog/model/store"
 import { useNewPost } from "@/features/post/add/model/useNewPost"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { addPost } from "@/entity/post/api/addPost"
+import { GetPostsResponse } from "@/entity/post/model/types"
 
 export const ADD_POST_DIALOG = "ADD_POST_DIALOG"
 
 export const AddPostDialog = () => {
+  const queryClient = useQueryClient()
   const { isDialogOpen, setDialogOpen, closeDialog } = useDialogStore()
   const { newPost, setNewPost, reset } = useNewPost()
 
@@ -16,7 +18,13 @@ export const AddPostDialog = () => {
       closeDialog(ADD_POST_DIALOG)
       reset()
       // 기존 게시물 목록에 추가
-      console.log(data)
+      queryClient.setQueriesData({ queryKey: ["posts"] }, (old: GetPostsResponse) => {
+        if (!old) return
+        return {
+          ...old,
+          posts: [{ ...data, views: 0, tags: [], reactions: { likes: 0, dislikes: 0 } }, ...old.posts],
+        }
+      })
     },
     onError: (error) => {
       console.error("게시물 추가 오류:", error)

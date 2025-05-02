@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query"
 
-import { useSelectedTag } from "../../tag/model/selectedTag"
-import { getTagPosts } from "../api/getTagPosts"
+import { useSelectedTag } from "@/entity/tag/model/selectedTag"
+import { getTagPosts } from "@/entity/post/api/getTagPosts"
 
 export const useTagPosts = () => {
   const { selectedTag } = useSelectedTag()
 
   return useQuery({
-    queryKey: ["tagPosts", selectedTag],
+    queryKey: ["posts", { tag: selectedTag }],
     queryFn: async () => {
       try {
         return await getTagPosts(selectedTag)

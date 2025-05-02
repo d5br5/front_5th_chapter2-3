@@ -6,7 +6,7 @@ export const useSearchPosts = () => {
   const { searchQuery } = useSearchStore()
 
   return useQuery({
-    queryKey: ["searchPosts", searchQuery],
+    queryKey: ["posts", { searchQuery }],
     queryFn: async () => {
       try {
         return await searchPosts(searchQuery)
