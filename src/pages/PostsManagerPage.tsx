@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/shared/ui"
 import { AddCommentDialog } from "../features/comment/add-dialog/ui/CommentAddDialog"
 import { EditPostDialog } from "../features/post/edit-dialog/EditPostDialog"
 
-import { AddPostDialog } from "../features/post/add-dialog"
+import { AddPostDialog } from "../widgets/post/add-dialog"
 import { PostDetailDialog } from "../widgets/post/detail-dialog"
 import { useUpdateURL } from "../features/url/model/useUpdateURL"
 

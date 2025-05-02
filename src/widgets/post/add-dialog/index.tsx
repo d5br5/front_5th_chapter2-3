@@ -1,12 +1,27 @@
 import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, Input, Textarea } from "@/shared/ui"
 import { useDialogStore } from "@/features/dialog/model/store"
-import { useNewPost } from "./model/useNewPost"
+import { useNewPost } from "@/features/post/add/model/useNewPost"
+import { useMutation } from "@tanstack/react-query"
+import { addPost } from "@/entity/post/api/addPost"
 
 export const ADD_POST_DIALOG = "ADD_POST_DIALOG"
 
 export const AddPostDialog = () => {
-  const { isDialogOpen, setDialogOpen } = useDialogStore()
-  const { newPost, setNewPost, mutation } = useNewPost()
+  const { isDialogOpen, setDialogOpen, closeDialog } = useDialogStore()
+  const { newPost, setNewPost, reset } = useNewPost()
+
+  const mutation = useMutation({
+    mutationFn: () => addPost(newPost),
+    onSuccess: (data) => {
+      closeDialog(ADD_POST_DIALOG)
+      reset()
+      // 기존 게시물 목록에 추가
+      console.log(data)
+    },
+    onError: (error) => {
+      console.error("게시물 추가 오류:", error)
+    },
+  })
 
   return (
     <Dialog open={isDialogOpen(ADD_POST_DIALOG)} onOpenChange={(open) => setDialogOpen(ADD_POST_DIALOG, open)}>
