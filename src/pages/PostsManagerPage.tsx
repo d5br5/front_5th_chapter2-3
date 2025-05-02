@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/shared/ui"
 
 import { AddCommentDialog } from "../features/comment/add-dialog/ui/CommentAddDialog"
-import { EditPostDialog } from "../features/post/edit-dialog/EditPostDialog"
+import { EditPostDialog } from "../widgets/post/edit-dialog"
 
 import { AddPostDialog } from "../widgets/post/add-dialog"
 import { PostDetailDialog } from "../widgets/post/detail-dialog"

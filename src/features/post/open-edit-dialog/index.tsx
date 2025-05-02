@@ -1,7 +1,7 @@
 import { useSelectedPost } from "@/entity/post/model/selectedPost"
 import { UserPost } from "@/entity/post/model/useUserPosts"
 import { useDialogStore } from "@/features/dialog/model/store"
-import { EDIT_POST_DIALOG } from "../edit-dialog/EditPostDialog"
+import { EDIT_POST_DIALOG } from "../../../widgets/post/edit-dialog"
 import { OpenPostEditDialogButton } from "@/entity/post/ui/OpenEditDialogButton"
 
 export const PostEditButton = ({ post }: { post: UserPost }) => {
