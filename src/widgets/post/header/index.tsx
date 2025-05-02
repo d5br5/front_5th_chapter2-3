@@ -1,4 +1,4 @@
-import { PostAddButton } from "@/features/post/add-button"
+import { OpenPostAddDialog } from "@/features/post/open-add-dialog"
 import { CardHeader, CardTitle } from "@/shared/ui"
 
 export const AdminHeader = () => {
@@ -6,7 +6,7 @@ export const AdminHeader = () => {
     <CardHeader>
       <CardTitle className="flex items-center justify-between">
         <span>게시물 관리자</span>
-        <PostAddButton />
+        <OpenPostAddDialog />
       </CardTitle>
     </CardHeader>
   )
